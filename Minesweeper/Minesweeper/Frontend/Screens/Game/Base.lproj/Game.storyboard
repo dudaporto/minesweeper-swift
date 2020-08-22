@@ -16,23 +16,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07J-Lm-KR0" customClass="BoardView" customModule="Minesweeper" customModuleProvider="target">
-                                <rect key="frame" x="57" y="303" width="300" height="300"/>
+                                <rect key="frame" x="20" y="203" width="374" height="500"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="07J-Lm-KR0" secondAttribute="height" multiplier="1:1" id="bGi-rF-Hox"/>
-                                    <constraint firstAttribute="height" constant="300" id="oFK-62-N9y"/>
-                                    <constraint firstAttribute="width" constant="300" id="odN-N8-UqJ"/>
+                                    <constraint firstAttribute="height" constant="500" id="uvn-U2-UlI"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="07J-Lm-KR0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aCp-rk-q1J"/>
-                            <constraint firstItem="07J-Lm-KR0" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="d9P-CJ-EwQ"/>
+                            <constraint firstItem="07J-Lm-KR0" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="75d-sy-6v5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="07J-Lm-KR0" secondAttribute="trailing" constant="20" id="eUv-VG-KfF"/>
+                            <constraint firstItem="07J-Lm-KR0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yKZ-HK-LTS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="boardHeightConstraint" destination="uvn-U2-UlI" id="mlc-ZY-bVO"/>
                         <outlet property="boardView" destination="07J-Lm-KR0" id="fZf-lw-2WL"/>
                     </connections>
                 </viewController>

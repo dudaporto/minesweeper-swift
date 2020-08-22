@@ -10,16 +10,23 @@ import Foundation
 
 class Game {
     enum Difficulty: Int {
-        case easy = 8
-        case medium = 12
-        case hard = 16
+        case easy = 15
+        case medium = 20
+        case hard = 30
         
         var numberOfBombs: Int {
-            rawValue * 2
+            rawValue
         }
         
-        var dimention: Int {
-            rawValue
+        var boardSize: Board.Size {
+            switch self {
+            case .easy:
+                return Board.Size(lines: 10, columns: 8)
+            case .medium:
+                return Board.Size(lines: 14, columns: 10)
+            case .hard:
+                return Board.Size(lines: 18, columns: 12)
+            }
         }
     }
     

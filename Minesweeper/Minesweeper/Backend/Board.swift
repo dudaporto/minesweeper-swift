@@ -9,27 +9,33 @@
 import Foundation
 
 class Board {
+    struct Size {
+        //quantify of lines and columns in board
+        
+        let lines: Int
+        let columns: Int
+    }
+    
     let currentDifficulty: Game.Difficulty
     var board: [[BoardSquare]]
     
     init(difficulty: Game.Difficulty) {
         currentDifficulty = difficulty
         board = [[BoardSquare]](repeating: [BoardSquare](repeating: BoardSquare(),
-                                                         count: difficulty.dimention), count: difficulty.dimention)
+                                                         count: difficulty.boardSize.columns), count: difficulty.boardSize.lines)
+        generateBoardValues(initialSquarePosition: Position.zero)
     }
     
     private func generateBoardValues(initialSquarePosition: Position) {
         setBombs(initialSquarePosition)
-        
-        for i in 0..<currentDifficulty.dimention {
-            for j in 0..<currentDifficulty.dimention {
+
+        for i in 0..<currentDifficulty.boardSize.lines {
+            for j in 0..<currentDifficulty.boardSize.columns {
                 let currentPosition = Position(lin: i, col: j)
                 
-                guard !isBomb(position: currentPosition) else {
-                    break
+                if !isBomb(position: currentPosition) {
+                    board[i][j].value = calculateNumberOfBombs(arround: currentPosition)
                 }
-                
-                board[i][j].value = calculateNumberOfBombs(arround: currentPosition)
             }
         }
     }
@@ -38,8 +44,8 @@ class Board {
         var bombsCount = 0
         
         while bombsCount < currentDifficulty.numberOfBombs {
-            let lin = Int.random(in: 0..<currentDifficulty.dimention)
-            let col = Int.random(in: 0..<currentDifficulty.dimention)
+            let lin = Int.random(in: 0..<currentDifficulty.boardSize.lines)
+            let col = Int.random(in: 0..<currentDifficulty.boardSize.columns)
             
             let position = Position(lin: lin, col: col)
             
@@ -53,17 +59,14 @@ class Board {
     private func calculateNumberOfBombs(arround position: Position) -> Int {
         var bombsArround = 0
         
+        //check all neighbors in the matrix
         for i in -1...1 {
             for j in -1...1 {
                 let lin = position.lin + i
                 let col = position.col + j
                 let currentPosition = Position(lin: lin, col: col)
                 
-                guard currentPosition.isValid(in: currentDifficulty.dimention) else {
-                    break
-                }
-                
-                if isBomb(position: currentPosition) {
+                if currentPosition.isValid(in: currentDifficulty.boardSize), isBomb(position: currentPosition) {
                     bombsArround += 1
                 }
             }
@@ -94,11 +97,15 @@ struct Position: Equatable {
             lhs.lin == rhs.lin && lhs.col == rhs.col
     }
     
-    func isValid(in dimention: Int) -> Bool {
+    func isValid(in boardSize: Board.Size) -> Bool {
         return lin >= 0 &&
-            lin < dimention &&
+            lin < boardSize.lines &&
             col >= 0 &&
-            col < dimention
+            col < boardSize.columns
+    }
+    
+    static var zero: Position {
+        return Position(lin: 0, col: 0)
     }
 }
 
