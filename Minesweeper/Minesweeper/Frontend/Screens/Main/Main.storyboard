@@ -20,7 +20,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
-                                    <segue destination="xuA-E2-rjC" kind="show" id="JcG-AM-jdG"/>
+                                    <segue destination="xuA-E2-rjC" kind="presentation" modalPresentationStyle="overFullScreen" id="JcG-AM-jdG"/>
                                 </connections>
                             </button>
                         </subviews>
