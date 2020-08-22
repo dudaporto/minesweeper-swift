@@ -16,6 +16,10 @@
 		6B91ACDF24F1B75B003A798F /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACDE24F1B75B003A798F /* Board.swift */; };
 		6B91ACE124F1B94A003A798F /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACE024F1B94A003A798F /* Record.swift */; };
 		6B91ACE324F1BAA1003A798F /* BoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACE224F1BAA1003A798F /* BoardSquare.swift */; };
+		6B91ACE624F1BD3F003A798F /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACE524F1BD3F003A798F /* BoardView.swift */; };
+		6B91ACE924F1C1A3003A798F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B91ACE824F1C1A3003A798F /* Main.storyboard */; };
+		6B91ACEC24F1C1B9003A798F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACEB24F1C1B9003A798F /* MainViewController.swift */; };
+		6B91ACEE24F1C651003A798F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B91ACED24F1C651003A798F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		6B91ACDE24F1B75B003A798F /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		6B91ACE024F1B94A003A798F /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		6B91ACE224F1BAA1003A798F /* BoardSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSquare.swift; sourceTree = "<group>"; };
+		6B91ACE524F1BD3F003A798F /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		6B91ACE824F1C1A3003A798F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6B91ACEB24F1C1B9003A798F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6B91ACED24F1C651003A798F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				6B91ACC024F19E6A003A798F /* AppDelegate.swift */,
+				6B91ACED24F1C651003A798F /* LaunchScreen.storyboard */,
 				6B91ACC924F19E6A003A798F /* Assets.xcassets */,
 				6B91ACCE24F19E6A003A798F /* Info.plist */,
 				6B91ACD524F1A2EE003A798F /* Backend */,
@@ -82,11 +91,11 @@
 		6B91ACD524F1A2EE003A798F /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				6B91ACD924F1A3CF003A798F /* Extensions */,
-				6B91ACDC24F1A846003A798F /* Game.swift */,
 				6B91ACDE24F1B75B003A798F /* Board.swift */,
-				6B91ACE024F1B94A003A798F /* Record.swift */,
 				6B91ACE224F1BAA1003A798F /* BoardSquare.swift */,
+				6B91ACDC24F1A846003A798F /* Game.swift */,
+				6B91ACE024F1B94A003A798F /* Record.swift */,
+				6B91ACD924F1A3CF003A798F /* Extensions */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -95,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				6B91ACD724F1A322003A798F /* Game */,
+				6B91ACE724F1C18A003A798F /* Main */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -104,6 +114,7 @@
 			children = (
 				6B91ACC624F19E6A003A798F /* Game.storyboard */,
 				6B91ACD824F1A328003A798F /* Controllers */,
+				6B91ACE424F1BD26003A798F /* Views */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -122,6 +133,31 @@
 				6B91ACDA24F1A3E0003A798F /* UIView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6B91ACE424F1BD26003A798F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6B91ACE524F1BD3F003A798F /* BoardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6B91ACE724F1C18A003A798F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6B91ACE824F1C1A3003A798F /* Main.storyboard */,
+				6B91ACEA24F1C1AA003A798F /* Controllers */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		6B91ACEA24F1C1AA003A798F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6B91ACEB24F1C1B9003A798F /* MainViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +218,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B91ACE924F1C1A3003A798F /* Main.storyboard in Resources */,
+				6B91ACEE24F1C651003A798F /* LaunchScreen.storyboard in Resources */,
 				6B91ACCA24F19E6A003A798F /* Assets.xcassets in Resources */,
 				6B91ACC824F19E6A003A798F /* Game.storyboard in Resources */,
 			);
@@ -199,6 +237,8 @@
 				6B91ACDB24F1A3E0003A798F /* UIView.swift in Sources */,
 				6B91ACE124F1B94A003A798F /* Record.swift in Sources */,
 				6B91ACDF24F1B75B003A798F /* Board.swift in Sources */,
+				6B91ACE624F1BD3F003A798F /* BoardView.swift in Sources */,
+				6B91ACEC24F1C1B9003A798F /* MainViewController.swift in Sources */,
 				6B91ACC124F19E6A003A798F /* AppDelegate.swift in Sources */,
 				6B91ACDD24F1A846003A798F /* Game.swift in Sources */,
 			);
@@ -268,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -322,7 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -337,7 +377,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K4PL34LUQ5;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -354,7 +396,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K4PL34LUQ5;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

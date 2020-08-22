@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KRf-6g-Hm0">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="X0q-62-iGA">
+            <objects>
+                <viewController id="KRf-6g-Hm0" customClass="MainViewController" customModule="Minesweeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fi4-N1-x7i">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6l1-3T-pzV">
+                                <rect key="frame" x="186.5" y="433.5" width="41" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <segue destination="xuA-E2-rjC" kind="show" id="JcG-AM-jdG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6l1-3T-pzV" firstAttribute="centerX" secondItem="QU2-lk-VCR" secondAttribute="centerX" id="4aA-12-zHB"/>
+                            <constraint firstItem="6l1-3T-pzV" firstAttribute="centerY" secondItem="QU2-lk-VCR" secondAttribute="centerY" id="ImZ-Lr-je0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QU2-lk-VCR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bJi-cf-U0C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="110"/>
+        </scene>
+        <!--Game-->
+        <scene sceneID="yfA-bO-RAk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Game" id="xuA-E2-rjC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QD4-2F-wjd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WBK-LM-Ndf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="772" y="110"/>
+        </scene>
+    </scenes>
+</document>
