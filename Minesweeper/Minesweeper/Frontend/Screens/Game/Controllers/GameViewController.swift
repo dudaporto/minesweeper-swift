@@ -13,18 +13,19 @@ class GameViewController: UIViewController {
     @IBOutlet weak var boardView: BoardView!
     @IBOutlet weak var boardHeightConstraint: NSLayoutConstraint!
     
+    let game = Game(difficulty: .easy)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let game = Game(difficulty: .hard)
-        
-        boardView.setRows(boardSize: game.currentDifficulty.boardSize, values: game.board.board)
+        boardView.setRows(boardSize: game.currentDifficulty.boardSize)
+        boardView.delegate = game
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         boardHeightConstraint.constant = boardView.prefferedHeight
+        
     }
 }
-

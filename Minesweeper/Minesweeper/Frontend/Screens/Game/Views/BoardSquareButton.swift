@@ -10,29 +10,43 @@ import UIKit
 
 protocol BoardSquareDelegate: NSObjectProtocol {
     func boardSquareClicked(_ square: BoardSquareButton)
+    func boardSquareDidToggleFlag(_ square: BoardSquareButton)
 }
 
 class BoardSquareButton: UIButton {
-    weak var delegate: BoardSquareDelegate?
+    enum State {
+        case revealed
+        case unrevealed
+        case flagged
+    }
     
-    var positionInBoard: Position?
-    var boardSquare: BoardSquare? {
+    var value: Int = 0 {
         didSet {
             setupStyle()
         }
     }
     
+    var squareState: State = .unrevealed
+    var positionInBoard: Position?
+    var isBomb: Bool {
+        value == -1
+    }
+    
+    weak var delegate: BoardSquareDelegate?
+
     private func commonInit() {
-        self.backgroundColor = .lightGray
+        self.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(flag(lgr:)))
+        longGesture.minimumPressDuration = 0.3
+        addGestureRecognizer(longGesture)
         addTarget(self, action: #selector(click), for: .touchUpInside)
+        
+        titleLabel!.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
     }
     
     private func setupStyle() {
-        self.setTitle("\(boardSquare!.value)", for: [])
-        self.titleLabel!.font = UIFont.boldSystemFont(ofSize: 14)
-        
-        switch boardSquare?.value {
+        switch value {
         case 1:
             self.setTitleColor(.red, for: [])
         case 2:
@@ -49,21 +63,36 @@ class BoardSquareButton: UIButton {
             self.setTitleColor(.magenta, for: [])
         case 8:
             self.setTitleColor(.brown, for: [])
-        case -1:
-            self.setTitle("*", for: [])
-            self.setTitleColor(.black, for: [])
-        case .none:
-            break
         default:
             self.setTitleColor(.white, for: [])
-            
         }
     }
     
+    func reveal() {
+        self.squareState = .revealed
+        self.setTitle("\(value)", for: [])
+    }
+    
     @objc func click() {
+        guard squareState == .unrevealed else {
+            return
+        }
+        
         delegate?.boardSquareClicked(self)
     }
     
+    @objc func flag(lgr: UILongPressGestureRecognizer) {
+        guard lgr.state == .began, squareState != .revealed else {
+            return
+        }
+        
+        //toggle the flag state
+        squareState = squareState == .flagged ? .unrevealed : .flagged
+        let title = squareState == .flagged ? "" : "F"
+        setTitle(title, for: [])
+        delegate?.boardSquareDidToggleFlag(self)
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         

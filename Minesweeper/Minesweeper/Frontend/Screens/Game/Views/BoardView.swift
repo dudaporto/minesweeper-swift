@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol BoardViewDelegate: NSObjectProtocol {
+    func boardViewDelegate(_ boardView: BoardView, didClickAtSquare square: BoardSquareButton)
+}
+
 class BoardView: UIStackView {
     private let squaresSpacing: CGFloat = 3
+    
+    weak var delegate: BoardViewDelegate?
     
     private func commonInit() {
         axis = .vertical
@@ -43,7 +49,7 @@ class BoardView: UIStackView {
         return height
     }
     
-    func setRows(boardSize: Board.Size, values: [[BoardSquare]]) {
+    func setRows(boardSize: Board.Size) {
         numberOfLines = boardSize.lines
         numberOfColumns = boardSize.columns
         
@@ -54,9 +60,8 @@ class BoardView: UIStackView {
             row.distribution = .fillEqually
             
             for j in 0..<numberOfColumns {
-                let square = BoardSquareButton(frame: .zero)
+                let square = BoardSquareButton(type: .system)
                 square.positionInBoard = Position(lin: i, col: j)
-                square.boardSquare = values[i][j]
                 square.delegate = self
                 row.addArrangedSubview(square)
             }
@@ -64,10 +69,39 @@ class BoardView: UIStackView {
            addArrangedSubview(row)
         }
     }
+    
+    func setValues(values: [[Int]]) {
+        for i in 0..<numberOfLines {
+            for j in 0..<numberOfColumns {
+                getSquare(at: Position(lin: i, col: j))?.value = values[i][j]
+            }
+        }
+    }
+    
+    func getSquare(at position: Position) -> BoardSquareButton? {
+        guard let row = arrangedSubviews[position.lin] as? UIStackView,
+            let square = row.arrangedSubviews[position.col] as? BoardSquareButton else {
+                return nil
+        }
+        
+        return square
+    }
+    
+    func performWinAnimation() {
+        
+    }
+    
+    func performLoseAnimation() {
+        
+    }
 }
 
 extension BoardView: BoardSquareDelegate {
+    func boardSquareDidToggleFlag(_ square: BoardSquareButton) {
+        // do nothing by now
+    }
+    
     func boardSquareClicked(_ square: BoardSquareButton) {
-        print("Quadrado clicado em linha: \(square.positionInBoard?.lin) e coluna: \(square.positionInBoard?.col)")
+        delegate?.boardViewDelegate(self, didClickAtSquare: square)
     }
 }

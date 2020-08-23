@@ -17,16 +17,15 @@ class Board {
     }
     
     let currentDifficulty: Game.Difficulty
-    var board: [[BoardSquare]]
+    var values: [[Int]]
     
-    init(difficulty: Game.Difficulty) {
+    init(difficulty: Game.Difficulty, initialSquarePosition: Position) {
         currentDifficulty = difficulty
-        board = [[BoardSquare]](repeating: [BoardSquare](repeating: BoardSquare(),
-                                                         count: difficulty.boardSize.columns), count: difficulty.boardSize.lines)
-        generateBoardValues(initialSquarePosition: Position.zero)
+        values = [[Int]](repeating: [Int](repeating: 0, count: difficulty.boardSize.columns), count: difficulty.boardSize.lines)
+        generateBoardValues(initialSquarePosition)
     }
     
-    private func generateBoardValues(initialSquarePosition: Position) {
+    private func generateBoardValues(_ initialSquarePosition: Position) {
         setBombs(initialSquarePosition)
 
         for i in 0..<currentDifficulty.boardSize.lines {
@@ -34,7 +33,7 @@ class Board {
                 let currentPosition = Position(lin: i, col: j)
                 
                 if !isBomb(position: currentPosition) {
-                    board[i][j].value = calculateNumberOfBombs(arround: currentPosition)
+                    values[i][j] = calculateNumberOfBombs(arround: currentPosition)
                 }
             }
         }
@@ -50,7 +49,7 @@ class Board {
             let position = Position(lin: lin, col: col)
             
             if position != initialSquarePosition {
-                board[lin][col].value = -1
+                values[lin][col] = -1
                 bombsCount += 1
             }
         }
@@ -76,15 +75,7 @@ class Board {
     }
     
     private func isBomb(position: Position) -> Bool {
-        return board[position.lin][position.col].isBomb
-    }
-    
-    private func flag(position: Position) {
-        board[position.lin][position.col].state = .flagged
-    }
-    
-    private func reveal(position: Position) {
-        board[position.lin][position.col].state = .revealed
+        return values[position.lin][position.col] == -1
     }
 }
 

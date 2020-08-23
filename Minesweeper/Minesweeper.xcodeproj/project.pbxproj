@@ -15,7 +15,6 @@
 		6B91ACDD24F1A846003A798F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACDC24F1A846003A798F /* Game.swift */; };
 		6B91ACDF24F1B75B003A798F /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACDE24F1B75B003A798F /* Board.swift */; };
 		6B91ACE124F1B94A003A798F /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACE024F1B94A003A798F /* Record.swift */; };
-		6B91ACE324F1BAA1003A798F /* BoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACE224F1BAA1003A798F /* BoardSquare.swift */; };
 		6B91ACE624F1BD3F003A798F /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACE524F1BD3F003A798F /* BoardView.swift */; };
 		6B91ACE924F1C1A3003A798F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B91ACE824F1C1A3003A798F /* Main.storyboard */; };
 		6B91ACEC24F1C1B9003A798F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACEB24F1C1B9003A798F /* MainViewController.swift */; };
@@ -34,7 +33,6 @@
 		6B91ACDC24F1A846003A798F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		6B91ACDE24F1B75B003A798F /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		6B91ACE024F1B94A003A798F /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		6B91ACE224F1BAA1003A798F /* BoardSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSquare.swift; sourceTree = "<group>"; };
 		6B91ACE524F1BD3F003A798F /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		6B91ACE824F1C1A3003A798F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6B91ACEB24F1C1B9003A798F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				6B91ACDE24F1B75B003A798F /* Board.swift */,
-				6B91ACE224F1BAA1003A798F /* BoardSquare.swift */,
 				6B91ACDC24F1A846003A798F /* Game.swift */,
 				6B91ACE024F1B94A003A798F /* Record.swift */,
 				6B91ACD924F1A3CF003A798F /* Extensions */,
@@ -236,7 +233,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B91ACC524F19E6A003A798F /* GameViewController.swift in Sources */,
-				6B91ACE324F1BAA1003A798F /* BoardSquare.swift in Sources */,
 				6B91ACF024F1CB7E003A798F /* BoardSquareButton.swift in Sources */,
 				6B91ACDB24F1A3E0003A798F /* UIView.swift in Sources */,
 				6B91ACE124F1B94A003A798F /* Record.swift in Sources */,

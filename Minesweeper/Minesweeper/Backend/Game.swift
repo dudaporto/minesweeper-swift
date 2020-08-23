@@ -8,11 +8,11 @@
 
 import Foundation
 
-class Game {
+class Game: NSObject {
     enum Difficulty: Int {
-        case easy = 15
-        case medium = 20
-        case hard = 30
+        case easy = 12
+        case medium = 25
+        case hard = 35
         
         var numberOfBombs: Int {
             rawValue
@@ -28,13 +28,71 @@ class Game {
                 return Board.Size(lines: 18, columns: 12)
             }
         }
+        
+        var totalCleanSquares: Int {
+            return (boardSize.lines * boardSize.columns) - numberOfBombs
+        }
     }
     
     let currentDifficulty: Difficulty
-    let board: Board
+    var board: Board?
+    private var squaresRevealed = 0
     
     init(difficulty: Difficulty) {
         currentDifficulty = difficulty
-        board = Board(difficulty: difficulty)
+    }
+    
+    func didLose(boardView: BoardView) {
+        boardView.performLoseAnimation()
+    }
+    
+    func didWin(boardView: BoardView) {
+        boardView.performWinAnimation()
+    }
+    
+    func reveal(from square: BoardSquareButton, at boardView: BoardView) {
+        guard square.squareState == .unrevealed else {
+            return
+        }
+        
+        square.reveal()
+        squaresRevealed += 1
+        
+        if square.value == 0 {
+            //check the neighbors
+            for i in -1...1 {
+                for j in -1...1 {
+                    let lin = square.positionInBoard!.lin + i
+                    let col = square.positionInBoard!.col + j
+                    let position = Position(lin: lin, col: col)
+                    
+                    if position.isValid(in: currentDifficulty.boardSize),
+                        let square = boardView.getSquare(at: position) {
+                        reveal(from: square, at: boardView)
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension Game: BoardViewDelegate {
+    func boardViewDelegate(_ boardView: BoardView, didClickAtSquare square: BoardSquareButton) {
+        if board == nil {
+            board = Board(difficulty: currentDifficulty, initialSquarePosition: square.positionInBoard!)
+            boardView.setValues(values: board!.values)
+    
+        }
+        
+        guard !square.isBomb else {
+            didLose(boardView: boardView)
+            return
+        }
+        
+        reveal(from: square, at: boardView)
+        
+        if squaresRevealed == currentDifficulty.totalCleanSquares {
+            didWin(boardView: boardView)
+        }
     }
 }
