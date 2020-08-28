@@ -48,7 +48,8 @@ class Board {
             
             let position = Position(lin: lin, col: col)
             
-            if position != initialSquarePosition {
+            // prevents the bomb from being in the first clicked square or its neighbors
+            if position != initialSquarePosition, !position.isNeighbor(of: initialSquarePosition) {
                 values[lin][col] = -1
                 bombsCount += 1
             }
@@ -93,6 +94,20 @@ struct Position: Equatable {
             lin < boardSize.lines &&
             col >= 0 &&
             col < boardSize.columns
+    }
+    
+    func isNeighbor(of other: Position) -> Bool {
+        for i in -1...1 {
+            for j in -1...1 {
+                let lin = self.lin + i
+                let col = self.col + j
+                
+                if Position(lin: lin, col: col) == other {
+                    return true
+                }
+            }
+        }
+        return false
     }
     
     static var zero: Position {

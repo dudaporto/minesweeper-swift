@@ -8,6 +8,11 @@
 
 import Foundation
 
+protocol GameDelegate: NSObjectProtocol {
+    func didWinGame()
+    func didLoseGame()
+}
+
 class Game: NSObject {
     enum Difficulty: Int {
         case easy = 12
@@ -34,19 +39,24 @@ class Game: NSObject {
         }
     }
     
-    let currentDifficulty: Difficulty
+    weak var delegate: GameDelegate?
+    
+    var currentDifficulty: Difficulty
     var board: Board?
     private var squaresRevealed = 0
     
-    init(difficulty: Difficulty) {
+    init(difficulty: Difficulty = .medium) {
+        board = nil
         currentDifficulty = difficulty
     }
     
     func didLose(boardView: BoardView) {
+        delegate?.didLoseGame()
         boardView.performLoseAnimation()
     }
     
     func didWin(boardView: BoardView) {
+        delegate?.didWinGame()
         boardView.performWinAnimation()
     }
     

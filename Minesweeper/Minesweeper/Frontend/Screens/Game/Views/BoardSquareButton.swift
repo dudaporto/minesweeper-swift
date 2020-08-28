@@ -88,7 +88,7 @@ class BoardSquareButton: UIButton {
         
         //toggle the flag state
         squareState = squareState == .flagged ? .unrevealed : .flagged
-        let title = squareState == .flagged ? "" : "F"
+        let title = squareState == .flagged ? "F" : ""
         setTitle(title, for: [])
         delegate?.boardSquareDidToggleFlag(self)
     }

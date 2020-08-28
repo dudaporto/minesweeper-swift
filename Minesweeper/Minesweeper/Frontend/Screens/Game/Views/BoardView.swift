@@ -13,13 +13,10 @@ protocol BoardViewDelegate: NSObjectProtocol {
 }
 
 class BoardView: UIStackView {
-    private let squaresSpacing: CGFloat = 3
-    
     weak var delegate: BoardViewDelegate?
     
     private func commonInit() {
         axis = .vertical
-        spacing = squaresSpacing
         distribution = .fillEqually
         translatesAutoresizingMaskIntoConstraints = false
     }
@@ -39,16 +36,6 @@ class BoardView: UIStackView {
     var numberOfLines = 0
     var numberOfColumns = 0
     
-    var prefferedHeight: CGFloat {
-        //calculates the height for subviews to be perfect squares
-        
-        let lines = CGFloat(numberOfLines)
-        let columns = CGFloat(numberOfColumns)
-        let squaresWidth = (frame.width - squaresSpacing * (columns - 2)) / columns
-        let height: CGFloat = squaresWidth * lines + squaresSpacing * (lines - 2)
-        return height
-    }
-    
     func setRows(boardSize: Board.Size) {
         numberOfLines = boardSize.lines
         numberOfColumns = boardSize.columns
@@ -56,7 +43,7 @@ class BoardView: UIStackView {
         for i in 0..<numberOfLines {
             let row = UIStackView(arrangedSubviews: [])
             row.axis = .horizontal
-            row.spacing = squaresSpacing
+            row.spacing = spacing
             row.distribution = .fillEqually
             
             for j in 0..<numberOfColumns {
@@ -88,11 +75,9 @@ class BoardView: UIStackView {
     }
     
     func performWinAnimation() {
-        
     }
     
     func performLoseAnimation() {
-        
     }
 }
 
