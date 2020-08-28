@@ -42,7 +42,7 @@ class BoardSquareButton: UIButton {
         addGestureRecognizer(longGesture)
         addTarget(self, action: #selector(click), for: .touchUpInside)
         
-        titleLabel!.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
+        titleLabel!.font = UIFont.systemFont(ofSize: 14, weight: .bold)
     }
     
     private func setupStyle() {

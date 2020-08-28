@@ -10,8 +10,10 @@ import UIKit
 
 class GameViewController: UIViewController {
 
-    @IBOutlet weak var boardContainer: UIView!
-    @IBOutlet weak var boardHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var difficultyLabel: UILabel!
+    @IBOutlet private weak var restartButton: UIButton!
+    @IBOutlet private weak var boardContainer: UIView!
+    @IBOutlet private weak var boardHeightConstraint: NSLayoutConstraint!
     
     var game = Game(difficulty: .easy)
     private let squaresSpacing: CGFloat = 2
@@ -28,6 +30,12 @@ class GameViewController: UIViewController {
         super.viewWillAppear(animated)
         
         calculateBoardPrefferedHeight()
+    }
+
+    @IBSegueAction func showDifficultyPicker(_ coder: NSCoder) -> UIViewController? {
+        let viewController = DifficultyPickerViewController(coder: coder)
+        viewController?.delegate = self
+        return viewController
     }
     
     @IBAction func restartButtonAction(_ sender: Any) {
@@ -47,8 +55,9 @@ class GameViewController: UIViewController {
         boardHeightConstraint.constant = height
     }
     
-    private func restart() {
-        game = Game()
+    private func restart(difficulty: Game.Difficulty? = nil) {
+        let difficulty = difficulty ?? game.currentDifficulty
+        game = Game(difficulty: difficulty)
         game.delegate = self
         
         boardContainer.subviews.forEach({ view in
@@ -58,6 +67,7 @@ class GameViewController: UIViewController {
         initBoardView()
         calculateBoardPrefferedHeight()
         boardContainer.isUserInteractionEnabled = true
+        setupRestartButton(isEnabled: false)
     }
     
     private func initBoardView() {
@@ -73,9 +83,18 @@ class GameViewController: UIViewController {
             boardView.centerXAnchor.constraint(equalTo: boardContainer.centerXAnchor)
         ])
     }
+    
+    func setupRestartButton(isEnabled: Bool) {
+        restartButton.isEnabled = isEnabled
+        restartButton.alpha = isEnabled ? 1 : 0.7
+    }
 }
 
 extension GameViewController: GameDelegate {
+    func didStartBoard() {
+        setupRestartButton(isEnabled: true)
+    }
+    
     func didWinGame() {
         let alert = UIAlertController(title: "VOCÊ GANHOU!", message: "Deseja jogar novamente?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Não", style: .destructive, handler: { _ in
@@ -100,5 +119,20 @@ extension GameViewController: GameDelegate {
         }))
         
         present(alert, animated: true)
+    }
+}
+
+extension GameViewController: DifficultyPickerViewControllerDelegate {
+    func difficultyPickerDidSelectDifficulty(_ difficulty: Game.Difficulty) {
+        switch difficulty {
+        case .easy:
+            difficultyLabel.text = "Easy"
+        case .medium:
+            difficultyLabel.text = "Medium"
+        case .hard:
+            difficultyLabel.text = "Hard"
+        }
+        
+        restart(difficulty: difficulty)
     }
 }

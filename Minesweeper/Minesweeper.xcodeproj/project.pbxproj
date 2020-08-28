@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6B17BB8E24F8870A000C268D /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B17BB8D24F8870A000C268D /* Game.storyboard */; };
+		6B17BB9024F8914B000C268D /* DifficultyPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B17BB8F24F8914B000C268D /* DifficultyPicker.storyboard */; };
+		6B17BB9224F891A4000C268D /* DifficultyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17BB9124F891A4000C268D /* DifficultyPickerViewController.swift */; };
 		6B91ACC124F19E6A003A798F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACC024F19E6A003A798F /* AppDelegate.swift */; };
 		6B91ACC524F19E6A003A798F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACC424F19E6A003A798F /* GameViewController.swift */; };
 		6B91ACCA24F19E6A003A798F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B91ACC924F19E6A003A798F /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		6B17BB8D24F8870A000C268D /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
+		6B17BB8F24F8914B000C268D /* DifficultyPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DifficultyPicker.storyboard; sourceTree = "<group>"; };
+		6B17BB9124F891A4000C268D /* DifficultyPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPickerViewController.swift; sourceTree = "<group>"; };
 		6B91ACBD24F19E6A003A798F /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B91ACC024F19E6A003A798F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B91ACC424F19E6A003A798F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				6B17BB8D24F8870A000C268D /* Game.storyboard */,
+				6B17BB8F24F8914B000C268D /* DifficultyPicker.storyboard */,
 				6B91ACD824F1A328003A798F /* Controllers */,
 				6B91ACE424F1BD26003A798F /* Views */,
 			);
@@ -122,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				6B91ACC424F19E6A003A798F /* GameViewController.swift */,
+				6B17BB9124F891A4000C268D /* DifficultyPickerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -219,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B91ACE924F1C1A3003A798F /* Main.storyboard in Resources */,
+				6B17BB9024F8914B000C268D /* DifficultyPicker.storyboard in Resources */,
 				6B91ACEE24F1C651003A798F /* LaunchScreen.storyboard in Resources */,
 				6B91ACCA24F19E6A003A798F /* Assets.xcassets in Resources */,
 				6B17BB8E24F8870A000C268D /* Game.storyboard in Resources */,
@@ -235,6 +242,7 @@
 				6B91ACC524F19E6A003A798F /* GameViewController.swift in Sources */,
 				6B91ACF024F1CB7E003A798F /* BoardSquareButton.swift in Sources */,
 				6B91ACDB24F1A3E0003A798F /* UIView.swift in Sources */,
+				6B17BB9224F891A4000C268D /* DifficultyPickerViewController.swift in Sources */,
 				6B91ACE124F1B94A003A798F /* Record.swift in Sources */,
 				6B91ACDF24F1B75B003A798F /* Board.swift in Sources */,
 				6B91ACE624F1BD3F003A798F /* BoardView.swift in Sources */,

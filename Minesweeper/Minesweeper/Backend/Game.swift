@@ -9,6 +9,7 @@
 import Foundation
 
 protocol GameDelegate: NSObjectProtocol {
+    func didStartBoard()
     func didWinGame()
     func didLoseGame()
 }
@@ -91,7 +92,7 @@ extension Game: BoardViewDelegate {
         if board == nil {
             board = Board(difficulty: currentDifficulty, initialSquarePosition: square.positionInBoard!)
             boardView.setValues(values: board!.values)
-    
+            delegate?.didStartBoard()
         }
         
         guard !square.isBomb else {
