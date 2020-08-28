@@ -31,10 +31,14 @@ class BoardSquareButton: UIButton {
     var isBomb: Bool {
         value == -1
     }
+    var isFlagged: Bool {
+        squareState == .flagged
+    }
     
     weak var delegate: BoardSquareDelegate?
 
     private func commonInit() {
+        self.tintColor = .orange
         self.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(flag(lgr:)))
@@ -86,10 +90,11 @@ class BoardSquareButton: UIButton {
             return
         }
         
+        let flagImage = UIImage(systemName: "flag.fill")
+        
         //toggle the flag state
-        squareState = squareState == .flagged ? .unrevealed : .flagged
-        let title = squareState == .flagged ? "F" : ""
-        setTitle(title, for: [])
+        squareState = isFlagged ? .unrevealed : .flagged
+        self.setImage(isFlagged ? flagImage : nil, for: [])
         delegate?.boardSquareDidToggleFlag(self)
     }
 

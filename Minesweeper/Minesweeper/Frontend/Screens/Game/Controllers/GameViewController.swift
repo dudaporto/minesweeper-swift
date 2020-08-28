@@ -14,6 +14,8 @@ class GameViewController: UIViewController {
     @IBOutlet private weak var restartButton: UIButton!
     @IBOutlet private weak var boardContainer: UIView!
     @IBOutlet private weak var boardHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var flagsLabel: UILabel!
+    @IBOutlet private weak var timerLabel: UILabel!
     
     var game = Game(difficulty: .easy)
     private let squaresSpacing: CGFloat = 2
@@ -22,8 +24,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         boardContainer.backgroundColor = .clear
-        game.delegate = self
-        initBoardView()
+        startNewGame()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +40,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func restartButtonAction(_ sender: Any) {
-        restart()
+        startNewGame()
     }
     
     private func calculateBoardPrefferedHeight() {
@@ -55,10 +56,12 @@ class GameViewController: UIViewController {
         boardHeightConstraint.constant = height
     }
     
-    private func restart(difficulty: Game.Difficulty? = nil) {
+    private func startNewGame(difficulty: Game.Difficulty? = nil) {
         let difficulty = difficulty ?? game.currentDifficulty
         game = Game(difficulty: difficulty)
         game.delegate = self
+        
+        flagsLabel.text = "\(difficulty.numberOfBombs)"
         
         boardContainer.subviews.forEach({ view in
             view.removeFromSuperview()
@@ -102,7 +105,7 @@ extension GameViewController: GameDelegate {
         }))
         
         alert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { _ in
-            self.restart()
+            self.startNewGame()
         }))
         
         present(alert, animated: true)
@@ -115,7 +118,7 @@ extension GameViewController: GameDelegate {
         }))
         
         alert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { _ in
-            self.restart()
+            self.startNewGame()
         }))
         
         present(alert, animated: true)
@@ -133,6 +136,6 @@ extension GameViewController: DifficultyPickerViewControllerDelegate {
             difficultyLabel.text = "Hard"
         }
         
-        restart(difficulty: difficulty)
+        startNewGame(difficulty: difficulty)
     }
 }
