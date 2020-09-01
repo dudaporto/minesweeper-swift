@@ -17,6 +17,9 @@ class GameViewController: UIViewController {
     @IBOutlet private weak var flagsLabel: UILabel!
     @IBOutlet private weak var timerLabel: UILabel!
     
+    private var timerCounter = 0
+    private var timer: Timer?
+    
     var game = Game(difficulty: .easy)
     private let squaresSpacing: CGFloat = 2
     
@@ -57,6 +60,8 @@ class GameViewController: UIViewController {
     }
     
     private func startNewGame(difficulty: Game.Difficulty? = nil) {
+        invalidateTimer()
+        
         let difficulty = difficulty ?? game.currentDifficulty
         game = Game(difficulty: difficulty)
         game.delegate = self
@@ -91,14 +96,36 @@ class GameViewController: UIViewController {
         restartButton.isEnabled = isEnabled
         restartButton.alpha = isEnabled ? 1 : 0.7
     }
+    
+    @objc private func runTimer() {
+        timerCounter += 1
+        let minutes = timerCounter / 60
+        let seconds = timerCounter % 60
+        let minutesText = minutes < 10 ? "0\(minutes)" : "\(minutes)"
+        let secondsText = seconds < 10 ? "0\(seconds)" : "\(seconds)"
+        timerLabel.text = "\(minutesText):\(secondsText)"
+    }
+    
+    private func invalidateTimer() {
+        timer?.invalidate()
+        timerLabel.text = "00:00"
+        timerCounter = 0
+    }
 }
 
 extension GameViewController: GameDelegate {
     func didStartBoard() {
         setupRestartButton(isEnabled: true)
+        timer = Timer.scheduledTimer(timeInterval: 1,
+                                         target: self,
+                                         selector: #selector(runTimer),
+                                         userInfo: nil,
+                                         repeats: true)
     }
     
     func didWinGame() {
+        timer?.invalidate()
+        
         let alert = UIAlertController(title: "VOCÊ GANHOU!", message: "Deseja jogar novamente?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Não", style: .destructive, handler: { _ in
             self.boardContainer.isUserInteractionEnabled = false
@@ -112,6 +139,8 @@ extension GameViewController: GameDelegate {
     }
     
     func didLoseGame() {
+        timer?.invalidate()
+        
         let alert = UIAlertController(title: "VOCÊ PERDEU!", message: "Deseja jogar novamente?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Não", style: .destructive, handler: { _ in
             self.boardContainer.isUserInteractionEnabled = false
