@@ -9,6 +9,7 @@
 import UIKit
 
 class GameViewController: UIViewController {
+    private let squaresSpacing: CGFloat = 2
 
     @IBOutlet private weak var difficultyLabel: UILabel!
     @IBOutlet private weak var restartButton: UIButton!
@@ -17,17 +18,13 @@ class GameViewController: UIViewController {
     @IBOutlet private weak var flagsLabel: UILabel!
     @IBOutlet private weak var timerLabel: UILabel!
     
-    private var timerCounter = 0
-    private var timer: Timer?
-    
-    var game = Game(difficulty: .easy)
-    private let squaresSpacing: CGFloat = 2
+    var game: Game!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         boardContainer.backgroundColor = .clear
-        startNewGame()
+        startNewGame(difficulty: DifficultyManager.getSelectedDifficulty())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,15 +32,15 @@ class GameViewController: UIViewController {
         
         calculateBoardPrefferedHeight()
     }
+    
+    @IBAction func restartButtonAction(_ sender: Any) {
+        startNewGame()
+    }
 
     @IBSegueAction func showDifficultyPicker(_ coder: NSCoder) -> UIViewController? {
         let viewController = DifficultyPickerViewController(coder: coder)
         viewController?.delegate = self
         return viewController
-    }
-    
-    @IBAction func restartButtonAction(_ sender: Any) {
-        startNewGame()
     }
     
     private func calculateBoardPrefferedHeight() {
@@ -59,12 +56,22 @@ class GameViewController: UIViewController {
         boardHeightConstraint.constant = height
     }
     
+    private func updateDifficultyLabel() {
+        switch game.currentDifficulty {
+        case .easy:
+            difficultyLabel.text = "Easy"
+        case .medium:
+            difficultyLabel.text = "Medium"
+        case .hard:
+            difficultyLabel.text = "Hard"
+        }
+    }
+    
     private func startNewGame(difficulty: Game.Difficulty? = nil) {
         invalidateTimer()
         
         let difficulty = difficulty ?? game.currentDifficulty
         game = Game(difficulty: difficulty)
-        game.delegate = self
         
         flagsLabel.text = "\(difficulty.numberOfBombs)"
         
@@ -76,13 +83,14 @@ class GameViewController: UIViewController {
         calculateBoardPrefferedHeight()
         boardContainer.isUserInteractionEnabled = true
         setupRestartButton(isEnabled: false)
+        updateDifficultyLabel()
     }
     
     private func initBoardView() {
         let boardView = BoardView(frame: boardContainer.frame)
         boardView.spacing = squaresSpacing
         boardView.setRows(boardSize: game.currentDifficulty.boardSize)
-        boardView.delegate = game
+        boardView.delegate = self
         boardContainer.addSubview(boardView)
         
         NSLayoutConstraint.activate([
@@ -92,10 +100,14 @@ class GameViewController: UIViewController {
         ])
     }
     
-    func setupRestartButton(isEnabled: Bool) {
+    private func setupRestartButton(isEnabled: Bool) {
         restartButton.isEnabled = isEnabled
         restartButton.alpha = isEnabled ? 1 : 0.7
     }
+
+//MARK: -  Timer
+    private var timerCounter = 0
+    private var timer: Timer?
     
     @objc private func runTimer() {
         timerCounter += 1
@@ -111,10 +123,9 @@ class GameViewController: UIViewController {
         timerLabel.text = "00:00"
         timerCounter = 0
     }
-}
 
-extension GameViewController: GameDelegate {
-    func didStartBoard() {
+//MARK: - Game Essentials
+    private func didStartBoard() {
         setupRestartButton(isEnabled: true)
         timer = Timer.scheduledTimer(timeInterval: 1,
                                          target: self,
@@ -123,7 +134,7 @@ extension GameViewController: GameDelegate {
                                          repeats: true)
     }
     
-    func didWinGame() {
+    private func didWinGame() {
         timer?.invalidate()
         
         let alert = UIAlertController(title: "VOCÊ GANHOU!", message: "Deseja jogar novamente?", preferredStyle: .alert)
@@ -138,7 +149,7 @@ extension GameViewController: GameDelegate {
         present(alert, animated: true)
     }
     
-    func didLoseGame() {
+    private func didLoseGame() {
         timer?.invalidate()
         
         let alert = UIAlertController(title: "VOCÊ PERDEU!", message: "Deseja jogar novamente?", preferredStyle: .alert)
@@ -154,17 +165,34 @@ extension GameViewController: GameDelegate {
     }
 }
 
-extension GameViewController: DifficultyPickerViewControllerDelegate {
-    func difficultyPickerDidSelectDifficulty(_ difficulty: Game.Difficulty) {
-        switch difficulty {
-        case .easy:
-            difficultyLabel.text = "Easy"
-        case .medium:
-            difficultyLabel.text = "Medium"
-        case .hard:
-            difficultyLabel.text = "Hard"
+//MARK: - Board View Delegate
+extension GameViewController: BoardViewDelegate {
+    func boardViewDelegate(_ boardView: BoardView, didClickAtSquare square: BoardSquareButton) {
+        // initializes the values ​​only after the first click
+        if game.board == nil {
+            game.board = Board(difficulty: game.currentDifficulty, initialSquarePosition: square.positionInBoard!)
+            boardView.setValues(values: game.board!.values)
+            didStartBoard()
         }
         
+        guard !square.isBomb else {
+            boardView.performLoseAnimation()
+            didLoseGame()
+            return
+        }
+        
+        boardView.reveal(from: square, in: game.currentDifficulty.boardSize)
+        
+        if boardView.squaresRevealed == game.currentDifficulty.totalCleanSquares {
+            boardView.performWinAnimation()
+            didWinGame()
+        }
+    }
+}
+
+//MARK: - Difficulty Picker View Controller Delegate
+extension GameViewController: DifficultyPickerViewControllerDelegate {
+    func difficultyPickerDidSelectDifficulty(_ difficulty: Game.Difficulty) {
         startNewGame(difficulty: difficulty)
     }
 }

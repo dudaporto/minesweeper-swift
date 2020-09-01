@@ -18,18 +18,21 @@ class DifficultyPickerViewController: UIViewController {
     @IBAction private func easyButtonClicked(_ sender: Any) {
         dismiss(animated: true, completion: {
             self.delegate?.difficultyPickerDidSelectDifficulty(.easy)
+            DifficultyManager.saveSeletedDifficulty(.easy)
         })
     }
     
     @IBAction private func mediumButtonClicked(_ sender: Any) {
         dismiss(animated: true, completion: {
             self.delegate?.difficultyPickerDidSelectDifficulty(.medium)
+            DifficultyManager.saveSeletedDifficulty(.medium)
         })
     }
     
     @IBAction private func hardButtonClicked(_ sender: Any) {
         dismiss(animated: true, completion: {
             self.delegate?.difficultyPickerDidSelectDifficulty(.hard)
+            DifficultyManager.saveSeletedDifficulty(.hard)
         })
     }
 }

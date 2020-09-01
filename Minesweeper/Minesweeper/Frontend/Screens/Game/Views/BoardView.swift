@@ -35,6 +35,7 @@ class BoardView: UIStackView {
     
     var numberOfLines = 0
     var numberOfColumns = 0
+    private(set) var squaresRevealed = 0
     
     func setRows(boardSize: Board.Size) {
         numberOfLines = boardSize.lines
@@ -72,6 +73,31 @@ class BoardView: UIStackView {
         }
         
         return square
+    }
+    
+    func reveal(from square: BoardSquareButton, in boardSize: Board.Size) {
+        guard square.squareState == .unrevealed else {
+            return
+        }
+        
+        square.reveal()
+        squaresRevealed += 1
+        
+        if square.value == 0 {
+            //check the neighbors
+            for i in -1...1 {
+                for j in -1...1 {
+                    let lin = square.positionInBoard!.lin + i
+                    let col = square.positionInBoard!.col + j
+                    let position = Position(lin: lin, col: col)
+                    
+                    if position.isValid(in: boardSize),
+                        let square = getSquare(at: position) {
+                        reveal(from: square, in: boardSize)
+                    }
+                }
+            }
+        }
     }
     
     func performWinAnimation() {
