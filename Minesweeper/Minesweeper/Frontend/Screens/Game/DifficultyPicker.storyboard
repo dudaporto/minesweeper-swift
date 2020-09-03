@@ -18,52 +18,73 @@
                             <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cu1-wt-otc" userLabel="BackgroundView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="kvO-xT-Vq9" appends="YES" id="1ga-qP-yMZ"/>
+                                </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jw2-DT-Uk3">
-                                <rect key="frame" x="30" y="228" width="354" height="450"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jw2-DT-Uk3" userLabel="Select Diifficulty">
+                                <rect key="frame" x="30" y="257.5" width="354" height="391.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oLv-fx-s9z">
-                                        <rect key="frame" x="50" y="105" width="254" height="240"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1m-O4-mvC">
+                                        <rect key="frame" x="15" y="30" width="324" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oLv-fx-s9z" userLabel="Levels">
+                                        <rect key="frame" x="30" y="80.5" width="294" height="196"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oU8-zp-aQv">
-                                                <rect key="frame" x="0.0" y="0.0" width="254" height="70"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oU8-zp-aQv">
+                                                <rect key="frame" x="0.0" y="0.0" width="294" height="55"/>
                                                 <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="hHt-bu-8FC"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <state key="normal" title="Easy"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                                <state key="normal" title="Easy">
+                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="selected" image="checkmark.circle" catalog="system">
+                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10"/>
+                                                        <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="easyButtonClicked:" destination="ChR-kn-8Mx" eventType="touchUpInside" id="teg-5H-m3y"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ghj-yC-cMn">
-                                                <rect key="frame" x="0.0" y="85" width="254" height="70"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ghj-yC-cMn">
+                                                <rect key="frame" x="0.0" y="70" width="294" height="55.5"/>
                                                 <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <state key="normal" title="Medium"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                                <state key="normal" title="Medium">
+                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="selected" image="checkmark.circle" catalog="system">
+                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10"/>
+                                                        <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="mediumButtonClicked:" destination="ChR-kn-8Mx" eventType="touchUpInside" id="Pjv-lt-jhQ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJu-Ed-htQ">
-                                                <rect key="frame" x="0.0" y="170" width="254" height="70"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJu-Ed-htQ">
+                                                <rect key="frame" x="0.0" y="140.5" width="294" height="55.5"/>
                                                 <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <state key="normal" title="Hard"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                                <state key="normal" title="Hard">
+                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="selected" image="checkmark.circle" catalog="system">
+                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10"/>
+                                                        <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -71,18 +92,66 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="196" id="EBJ-Ut-HXb"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DiV-jJ-2wa" userLabel="Buttons">
+                                        <rect key="frame" x="30" y="306.5" width="294" height="55"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWY-6t-0XE" userLabel="Leave to menu">
+                                                <rect key="frame" x="0.0" y="0.0" width="139.5" height="55"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="square.and.arrow.up" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="leaveToMenuButtonClicked:" destination="ChR-kn-8Mx" eventType="touchUpInside" id="C2R-DP-A4H"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnP-1G-9ZP" userLabel="Check">
+                                                <rect key="frame" x="154.5" y="0.0" width="139.5" height="55"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="checkmark" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="checkButtonClicked:" destination="ChR-kn-8Mx" eventType="touchUpInside" id="C91-re-spS"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="GfK-Sz-HWS"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="jw2-DT-Uk3" secondAttribute="height" multiplier="59:75" id="4qe-sW-Jqs"/>
-                                    <constraint firstItem="oLv-fx-s9z" firstAttribute="leading" secondItem="jw2-DT-Uk3" secondAttribute="leading" constant="50" id="HAc-hT-fyS"/>
-                                    <constraint firstItem="oLv-fx-s9z" firstAttribute="centerY" secondItem="jw2-DT-Uk3" secondAttribute="centerY" id="Mnv-gG-swT"/>
-                                    <constraint firstAttribute="trailing" secondItem="oLv-fx-s9z" secondAttribute="trailing" constant="50" id="wfP-yZ-M4U"/>
+                                    <constraint firstItem="c1m-O4-mvC" firstAttribute="top" secondItem="jw2-DT-Uk3" secondAttribute="top" constant="30" id="6vt-Mk-kBU"/>
+                                    <constraint firstItem="oLv-fx-s9z" firstAttribute="leading" secondItem="jw2-DT-Uk3" secondAttribute="leading" constant="30" id="HAc-hT-fyS"/>
+                                    <constraint firstItem="DiV-jJ-2wa" firstAttribute="top" secondItem="oLv-fx-s9z" secondAttribute="bottom" constant="30" id="PLC-1V-MNE"/>
+                                    <constraint firstItem="c1m-O4-mvC" firstAttribute="leading" secondItem="jw2-DT-Uk3" secondAttribute="leading" constant="15" id="W4a-jR-vP4"/>
+                                    <constraint firstItem="oLv-fx-s9z" firstAttribute="top" secondItem="c1m-O4-mvC" secondAttribute="bottom" constant="30" id="fKC-eh-CM2"/>
+                                    <constraint firstItem="DiV-jJ-2wa" firstAttribute="leading" secondItem="oLv-fx-s9z" secondAttribute="leading" id="giv-iM-bnc"/>
+                                    <constraint firstAttribute="trailing" secondItem="c1m-O4-mvC" secondAttribute="trailing" constant="15" id="hW8-aT-kwf"/>
+                                    <constraint firstAttribute="bottom" secondItem="DiV-jJ-2wa" secondAttribute="bottom" constant="30" id="n7g-4c-2lt"/>
+                                    <constraint firstItem="c1m-O4-mvC" firstAttribute="centerX" secondItem="jw2-DT-Uk3" secondAttribute="centerX" id="uev-Jm-afi"/>
+                                    <constraint firstAttribute="trailing" secondItem="oLv-fx-s9z" secondAttribute="trailing" constant="30" id="wfP-yZ-M4U"/>
+                                    <constraint firstItem="DiV-jJ-2wa" firstAttribute="trailing" secondItem="oLv-fx-s9z" secondAttribute="trailing" id="zwl-fe-T4o"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="16"/>
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -100,10 +169,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MOT-uy-h9o"/>
                     </view>
+                    <connections>
+                        <outlet property="easyButton" destination="oU8-zp-aQv" id="sik-N4-XSV"/>
+                        <outlet property="hardButton" destination="uJu-Ed-htQ" id="cEB-re-m6N"/>
+                        <outlet property="mediumButton" destination="Ghj-yC-cMn" id="haM-YQ-Zcc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upa-GB-cIe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="kvO-xT-Vq9" userLabel="Dismiss TGR">
+                    <connections>
+                        <action selector="backgroundViewClicked:" destination="ChR-kn-8Mx" id="Sqy-IV-pF6"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="86.956521739130437" y="119.86607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+    </resources>
 </document>

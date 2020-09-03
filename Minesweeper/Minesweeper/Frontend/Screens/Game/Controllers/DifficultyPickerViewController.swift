@@ -15,24 +15,61 @@ protocol DifficultyPickerViewControllerDelegate: NSObjectProtocol {
 class DifficultyPickerViewController: UIViewController {
     weak var delegate: DifficultyPickerViewControllerDelegate?
     
+    @IBOutlet weak var easyButton: UIButton!
+    @IBOutlet weak var mediumButton: UIButton!
+    @IBOutlet weak var hardButton: UIButton!
+
+    var selectedDifficulty: Game.Difficulty = .easy
+    
+    private func updateSelectedButton() {
+        easyButton.isSelected = false
+        mediumButton.isSelected = false
+        hardButton.isSelected = false
+        
+        switch selectedDifficulty {
+        case .easy:
+            easyButton.isSelected = true
+        case .medium:
+            mediumButton.isSelected = true
+        case .hard:
+            hardButton.isSelected = true
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        updateSelectedButton()
+    }
+    
+    @IBAction private func checkButtonClicked(_ sender: Any) {
+        dismiss(animated: true) {
+            self.delegate?.difficultyPickerDidSelectDifficulty(self.selectedDifficulty)
+            DifficultyManager.saveSeletedDifficulty(self.selectedDifficulty)
+        }
+    }
+    
+    @IBAction private func leaveToMenuButtonClicked(_ sender: Any) {
+        //TODO: go to Main
+        dismiss(animated: true)
+    }
+    
+    @IBAction private func backgroundViewClicked(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
     @IBAction private func easyButtonClicked(_ sender: Any) {
-        dismiss(animated: true, completion: {
-            self.delegate?.difficultyPickerDidSelectDifficulty(.easy)
-            DifficultyManager.saveSeletedDifficulty(.easy)
-        })
+        selectedDifficulty = .easy
+        updateSelectedButton()
     }
     
     @IBAction private func mediumButtonClicked(_ sender: Any) {
-        dismiss(animated: true, completion: {
-            self.delegate?.difficultyPickerDidSelectDifficulty(.medium)
-            DifficultyManager.saveSeletedDifficulty(.medium)
-        })
+        selectedDifficulty = .medium
+        updateSelectedButton()
     }
     
     @IBAction private func hardButtonClicked(_ sender: Any) {
-        dismiss(animated: true, completion: {
-            self.delegate?.difficultyPickerDidSelectDifficulty(.hard)
-            DifficultyManager.saveSeletedDifficulty(.hard)
-        })
+        selectedDifficulty = .hard
+        updateSelectedButton()
     }
 }

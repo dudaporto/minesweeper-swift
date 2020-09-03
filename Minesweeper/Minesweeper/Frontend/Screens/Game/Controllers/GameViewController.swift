@@ -11,9 +11,9 @@ import UIKit
 class GameViewController: UIViewController {
     private let squaresSpacing: CGFloat = 2
 
-    @IBOutlet private weak var difficultyLabel: UILabel!
     @IBOutlet private weak var restartButton: UIButton!
     @IBOutlet private weak var boardContainer: UIView!
+    @IBOutlet private weak var boardBackground: UIView!
     @IBOutlet private weak var boardHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var flagsLabel: UILabel!
     @IBOutlet private weak var timerLabel: UILabel!
@@ -27,8 +27,8 @@ class GameViewController: UIViewController {
         startNewGame(difficulty: DifficultyManager.getSelectedDifficulty())
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         calculateBoardPrefferedHeight()
     }
@@ -40,6 +40,7 @@ class GameViewController: UIViewController {
     @IBSegueAction func showDifficultyPicker(_ coder: NSCoder) -> UIViewController? {
         let viewController = DifficultyPickerViewController(coder: coder)
         viewController?.delegate = self
+        viewController?.selectedDifficulty = game.currentDifficulty
         return viewController
     }
     
@@ -56,24 +57,13 @@ class GameViewController: UIViewController {
         boardHeightConstraint.constant = height
     }
     
-    private func updateDifficultyLabel() {
-        switch game.currentDifficulty {
-        case .easy:
-            difficultyLabel.text = "Easy"
-        case .medium:
-            difficultyLabel.text = "Medium"
-        case .hard:
-            difficultyLabel.text = "Hard"
-        }
-    }
-    
     private func startNewGame(difficulty: Game.Difficulty? = nil) {
         invalidateTimer()
         
         let difficulty = difficulty ?? game.currentDifficulty
         game = Game(difficulty: difficulty)
         
-        flagsLabel.text = "\(difficulty.numberOfBombs)"
+        flagsLabel.text = "\(difficulty.numberOfBombs)".addLeadingZeros(stringLength: 3)
         
         boardContainer.subviews.forEach({ view in
             view.removeFromSuperview()
@@ -83,7 +73,6 @@ class GameViewController: UIViewController {
         calculateBoardPrefferedHeight()
         boardContainer.isUserInteractionEnabled = true
         setupRestartButton(isEnabled: false)
-        updateDifficultyLabel()
     }
     
     private func initBoardView() {
@@ -111,16 +100,13 @@ class GameViewController: UIViewController {
     
     @objc private func runTimer() {
         timerCounter += 1
-        let minutes = timerCounter / 60
-        let seconds = timerCounter % 60
-        let minutesText = minutes < 10 ? "0\(minutes)" : "\(minutes)"
-        let secondsText = seconds < 10 ? "0\(seconds)" : "\(seconds)"
-        timerLabel.text = "\(minutesText):\(secondsText)"
+        let secondsText = "\(timerCounter)".addLeadingZeros(stringLength: 3)
+        timerLabel.text  = secondsText
     }
     
     private func invalidateTimer() {
         timer?.invalidate()
-        timerLabel.text = "00:00"
+        timerLabel.text = "000"
         timerCounter = 0
     }
 
@@ -188,11 +174,29 @@ extension GameViewController: BoardViewDelegate {
             didWinGame()
         }
     }
+    
+    func boardViewDelegate(_ boardView: BoardView, didFlagSquare square: BoardSquareButton) {
+        // initializes board if the first action was to flag a square
+        if game.board == nil {
+            game.board = Board(difficulty: game.currentDifficulty, initialSquarePosition: square.positionInBoard!)
+            boardView.setValues(values: game.board!.values)
+            didStartBoard()
+        }
+        
+        var bombsLeft = game.currentDifficulty.numberOfBombs - boardView.squaresFlagged
+        if bombsLeft < 0 {
+            bombsLeft = 0
+        }
+        
+        flagsLabel.text = "\(bombsLeft)".addLeadingZeros(stringLength: 3)
+    }
 }
 
 //MARK: - Difficulty Picker View Controller Delegate
 extension GameViewController: DifficultyPickerViewControllerDelegate {
     func difficultyPickerDidSelectDifficulty(_ difficulty: Game.Difficulty) {
-        startNewGame(difficulty: difficulty)
+        if difficulty != game.currentDifficulty {
+            startNewGame(difficulty: difficulty)
+        }
     }
 }

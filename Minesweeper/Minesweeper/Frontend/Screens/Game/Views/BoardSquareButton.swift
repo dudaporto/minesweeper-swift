@@ -38,8 +38,8 @@ class BoardSquareButton: UIButton {
     weak var delegate: BoardSquareDelegate?
 
     private func commonInit() {
-        self.tintColor = .orange
-        self.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        self.tintColor = .systemOrange
+        self.backgroundColor = UIColor.systemGray.withAlphaComponent(0.5)
         
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(flag(lgr:)))
         longGesture.minimumPressDuration = 0.3
@@ -52,21 +52,21 @@ class BoardSquareButton: UIButton {
     private func setupStyle() {
         switch value {
         case 1:
-            self.setTitleColor(.red, for: [])
+            self.setTitleColor(.systemRed, for: [])
         case 2:
-            self.setTitleColor(.green, for: [])
+            self.setTitleColor(.systemGreen, for: [])
         case 3:
-            self.setTitleColor(.blue, for: [])
+            self.setTitleColor(.systemBlue, for: [])
         case 4:
-            self.setTitleColor(.purple, for: [])
+            self.setTitleColor(.systemPurple, for: [])
         case 5:
-            self.setTitleColor(.orange, for: [])
+            self.setTitleColor(.systemOrange, for: [])
         case 6:
             self.setTitleColor(.systemPink, for: [])
         case 7:
-            self.setTitleColor(.magenta, for: [])
+            self.setTitleColor(.systemYellow, for: [])
         case 8:
-            self.setTitleColor(.brown, for: [])
+            self.setTitleColor(.systemTeal, for: [])
         default:
             self.setTitleColor(.white, for: [])
         }

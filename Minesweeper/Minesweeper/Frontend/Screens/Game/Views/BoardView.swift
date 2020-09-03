@@ -10,6 +10,7 @@ import UIKit
 
 protocol BoardViewDelegate: NSObjectProtocol {
     func boardViewDelegate(_ boardView: BoardView, didClickAtSquare square: BoardSquareButton)
+    func boardViewDelegate(_ boardView: BoardView, didFlagSquare square: BoardSquareButton)
 }
 
 class BoardView: UIStackView {
@@ -36,6 +37,7 @@ class BoardView: UIStackView {
     var numberOfLines = 0
     var numberOfColumns = 0
     private(set) var squaresRevealed = 0
+    private(set) var squaresFlagged = 0
     
     func setRows(boardSize: Board.Size) {
         numberOfLines = boardSize.lines
@@ -109,7 +111,8 @@ class BoardView: UIStackView {
 
 extension BoardView: BoardSquareDelegate {
     func boardSquareDidToggleFlag(_ square: BoardSquareButton) {
-        // do nothing by now
+        squaresFlagged += square.isFlagged ? 1 : -1
+        delegate?.boardViewDelegate(self, didFlagSquare: square)
     }
     
     func boardSquareClicked(_ square: BoardSquareButton) {

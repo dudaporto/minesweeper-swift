@@ -16,14 +16,8 @@ extension UIView {
         }
         
         set {
+            layer.masksToBounds = true
             layer.cornerRadius = newValue
         }
-    }
-    
-    func loadNib() -> UIView {
-        let bundle = Bundle(for: Self.self)
-        let nibName = String(describing: Self.self)
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        return (nib.instantiate(withOwner: self, options: nil).filter { $0 is UIView }).first as! UIView
     }
 }

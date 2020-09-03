@@ -17,22 +17,22 @@ final class Game: NSObject {
         var numberOfBombs: Int {
             switch self {
             case .easy:
-                return 12
+                return 14 //20% of the board
             case .medium:
-                return 25
+                return 22 //21% of the board
             case .hard:
-                return 35
+                return 33 //22% of the board
             }
         }
         
         var boardSize: Board.Size {
             switch self {
             case .easy:
-                return Board.Size(lines: 10, columns: 8)
+                return Board.Size(lines: 9, columns: 8)
             case .medium:
-                return Board.Size(lines: 14, columns: 10)
+                return Board.Size(lines: 12, columns: 9)
             case .hard:
-                return Board.Size(lines: 18, columns: 12)
+                return Board.Size(lines: 15, columns: 10)
             }
         }
         
