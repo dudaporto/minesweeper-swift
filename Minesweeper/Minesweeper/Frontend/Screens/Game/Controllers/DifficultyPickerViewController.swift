@@ -22,17 +22,17 @@ class DifficultyPickerViewController: UIViewController {
     var selectedDifficulty: Game.Difficulty = .easy
     
     private func updateSelectedButton() {
-        easyButton.isSelected = false
-        mediumButton.isSelected = false
-        hardButton.isSelected = false
+        easyButton.borderColor = .clear
+        mediumButton.borderColor = .clear
+        hardButton.borderColor = .clear
         
         switch selectedDifficulty {
         case .easy:
-            easyButton.isSelected = true
+            easyButton.borderColor = .link
         case .medium:
-            mediumButton.isSelected = true
+            mediumButton.borderColor = .link
         case .hard:
-            hardButton.isSelected = true
+            hardButton.borderColor = .link
         }
     }
     

@@ -12,6 +12,7 @@ class GameViewController: UIViewController {
     private let squaresSpacing: CGFloat = 2
 
     @IBOutlet private weak var restartButton: UIButton!
+    @IBOutlet private weak var flagModeButton: UIButton!
     @IBOutlet private weak var boardContainer: UIView!
     @IBOutlet private weak var boardBackground: UIView!
     @IBOutlet private weak var boardHeightConstraint: NSLayoutConstraint!
@@ -20,10 +21,19 @@ class GameViewController: UIViewController {
     
     var game: Game!
     
+    private var isFlagModeActive: Bool = false {
+        didSet {
+            updateFlagMode()
+        }
+    }
+    
+    private var boardView: BoardView? {
+        (boardContainer.subviews.first as? BoardView)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        boardContainer.backgroundColor = .clear
         startNewGame(difficulty: DifficultyManager.getSelectedDifficulty())
     }
     
@@ -33,10 +43,15 @@ class GameViewController: UIViewController {
         calculateBoardPrefferedHeight()
     }
     
-    @IBAction func restartButtonAction(_ sender: Any) {
+    @IBAction private func restartButtonAction(_ sender: Any) {
         startNewGame()
     }
 
+    @IBAction private func flagModeAction(_ sender: Any) {
+        isFlagModeActive = !isFlagModeActive
+        boardView?.isFlagModeActive = isFlagModeActive
+    }
+    
     @IBSegueAction func showDifficultyPicker(_ coder: NSCoder) -> UIViewController? {
         let viewController = DifficultyPickerViewController(coder: coder)
         viewController?.delegate = self
@@ -59,6 +74,7 @@ class GameViewController: UIViewController {
     
     private func startNewGame(difficulty: Game.Difficulty? = nil) {
         invalidateTimer()
+        isFlagModeActive = false
         
         let difficulty = difficulty ?? game.currentDifficulty
         game = Game(difficulty: difficulty)
@@ -92,6 +108,19 @@ class GameViewController: UIViewController {
     private func setupRestartButton(isEnabled: Bool) {
         restartButton.isEnabled = isEnabled
         restartButton.alpha = isEnabled ? 1 : 0.7
+    }
+    
+    private func updateFlagMode() {
+        boardView?.toogleFlagPlaceholderInAll()
+        if isFlagModeActive {
+            flagModeButton.borderColor = .systemGreen
+            flagsLabel.textColor = .systemGreen
+            timerLabel.textColor = .systemGreen
+        } else {
+            flagModeButton.borderColor = .clear
+            flagsLabel.textColor = .white
+            timerLabel.textColor = .white
+        }
     }
 
 //MARK: -  Timer

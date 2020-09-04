@@ -20,4 +20,24 @@ extension UIView {
             layer.cornerRadius = newValue
         }
     }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        get {
+            layer.borderWidth
+        }
+        
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor {
+        get {
+            UIColor(cgColor: layer.borderColor!)
+        }
+        
+        set {
+            layer.borderColor = newValue.cgColor
+        }
+    }
 }

@@ -36,6 +36,7 @@ class BoardView: UIStackView {
     
     var numberOfLines = 0
     var numberOfColumns = 0
+    var isFlagModeActive = false
     
     var boardSize: Board.Size {
         return Board.Size(lines: numberOfLines, columns: numberOfColumns)
@@ -122,14 +123,24 @@ class BoardView: UIStackView {
         }
     }
     
+    func toogleFlagPlaceholderInAll() {
+        for i in 0..<boardSize.lines {
+            for j in 0..<boardSize.columns {
+                let position = Position(lin: i, col: j)
+                
+                if let square = getSquare(at: position), square.squareState != .revealed  {
+                    square.toggleFlagPlaceholder()
+                }
+            }
+        }
+    }
+    
     func performWinAnimation() {
         revealAll(isAWin: true)
     }
     
     func performLoseAnimation() {
-        UIView.animate(withDuration: 0.2, animations: {
-            self.revealAll()
-        })
+        revealAll()
     }
 }
 
@@ -140,6 +151,17 @@ extension BoardView: BoardSquareDelegate {
     }
     
     func boardSquareClicked(_ square: BoardSquareButton) {
+        if isFlagModeActive {
+            square.toggleFlag()
+            squaresFlagged += square.isFlagged ? 1 : -1
+            delegate?.boardViewDelegate(self, didFlagSquare: square)
+            return
+        }
+        
+        guard !square.isFlagged else {
+            return
+        }
+        
         delegate?.boardViewDelegate(self, didClickAtSquare: square)
     }
 }

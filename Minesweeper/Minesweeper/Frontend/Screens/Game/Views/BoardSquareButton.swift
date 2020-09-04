@@ -35,13 +35,14 @@ class BoardSquareButton: UIButton {
         squareState == .flagged
     }
     
+    var isShowingPlaceholer = false
+    
     weak var delegate: BoardSquareDelegate?
 
     private func commonInit() {
-        self.tintColor = .systemOrange
         self.backgroundColor = UIColor.systemGray.withAlphaComponent(0.5)
         
-        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(flag(lgr:)))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(flagAction(lgr:)))
         longGesture.minimumPressDuration = 0.15
         addGestureRecognizer(longGesture)
         addTarget(self, action: #selector(click), for: .touchUpInside)
@@ -89,25 +90,47 @@ class BoardSquareButton: UIButton {
         }
     }
     
+    func toggleFlagPlaceholder() {
+        guard !isFlagged else {
+            return
+        }
+        
+        let flagImage = UIImage(systemName: "flag.fill")
+        tintColor = UIColor.black.withAlphaComponent(0.2)
+        
+        self.setImage(isShowingPlaceholer ? nil : flagImage, for: [])
+        
+        isShowingPlaceholer = !isShowingPlaceholer
+    }
+    
+    func toggleFlag() {
+        guard squareState != .revealed else {
+            return
+        }
+        
+        let flagImage = UIImage(systemName: "flag.fill")
+        self.tintColor = .systemOrange
+        
+        //toggle the flag state
+        squareState = isFlagged ? .unrevealed : .flagged
+        self.setImage(isFlagged ? flagImage : nil, for: [])
+        delegate?.boardSquareDidToggleFlag(self)
+    }
+    
     @objc func click() {
-        guard squareState == .unrevealed else {
+        guard squareState != .revealed else {
             return
         }
         
         delegate?.boardSquareClicked(self)
     }
     
-    @objc func flag(lgr: UILongPressGestureRecognizer) {
+    @objc func flagAction(lgr: UILongPressGestureRecognizer) {
         guard lgr.state == .began, squareState != .revealed else {
             return
         }
         
-        let flagImage = UIImage(systemName: "flag.fill")
-        
-        //toggle the flag state
-        squareState = isFlagged ? .unrevealed : .flagged
-        self.setImage(isFlagged ? flagImage : nil, for: [])
-        delegate?.boardSquareDidToggleFlag(self)
+        toggleFlag()
     }
 
     override init(frame: CGRect) {
