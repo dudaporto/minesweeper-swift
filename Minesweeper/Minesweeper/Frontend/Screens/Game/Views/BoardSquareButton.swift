@@ -42,7 +42,7 @@ class BoardSquareButton: UIButton {
         self.backgroundColor = UIColor.systemGray.withAlphaComponent(0.5)
         
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(flag(lgr:)))
-        longGesture.minimumPressDuration = 0.3
+        longGesture.minimumPressDuration = 0.15
         addGestureRecognizer(longGesture)
         addTarget(self, action: #selector(click), for: .touchUpInside)
         
@@ -68,13 +68,25 @@ class BoardSquareButton: UIButton {
         case 8:
             self.setTitleColor(.systemTeal, for: [])
         default:
-            self.setTitleColor(.white, for: [])
+            self.setTitleColor(.clear, for: [])
         }
+    }
+    
+    private func setBombsImage() {
+        self.tintColor = .black
+        let bombImage = UIImage(named: "ic_bomb")
+        self.setImage(bombImage, for: [])
     }
     
     func reveal() {
         self.squareState = .revealed
-        self.setTitle("\(value)", for: [])
+        self.backgroundColor = UIColor.systemGray.withAlphaComponent(0.3)
+        
+        if isBomb {
+            setBombsImage()
+        } else {
+            self.setTitle("\(value)", for: [])
+        }
     }
     
     @objc func click() {

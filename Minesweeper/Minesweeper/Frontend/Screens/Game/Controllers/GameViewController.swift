@@ -163,11 +163,13 @@ extension GameViewController: BoardViewDelegate {
         
         guard !square.isBomb else {
             boardView.performLoseAnimation()
+            square.backgroundColor = UIColor.systemRed.withAlphaComponent(0.6)
             didLoseGame()
+            
             return
         }
         
-        boardView.reveal(from: square, in: game.currentDifficulty.boardSize)
+        boardView.reveal(from: square)
         
         if boardView.squaresRevealed == game.currentDifficulty.totalCleanSquares {
             boardView.performWinAnimation()

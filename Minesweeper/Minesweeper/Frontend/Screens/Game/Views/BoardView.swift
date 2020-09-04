@@ -36,6 +36,11 @@ class BoardView: UIStackView {
     
     var numberOfLines = 0
     var numberOfColumns = 0
+    
+    var boardSize: Board.Size {
+        return Board.Size(lines: numberOfLines, columns: numberOfColumns)
+    }
+    
     private(set) var squaresRevealed = 0
     private(set) var squaresFlagged = 0
     
@@ -77,7 +82,7 @@ class BoardView: UIStackView {
         return square
     }
     
-    func reveal(from square: BoardSquareButton, in boardSize: Board.Size) {
+    func reveal(from square: BoardSquareButton) {
         guard square.squareState == .unrevealed else {
             return
         }
@@ -95,7 +100,22 @@ class BoardView: UIStackView {
                     
                     if position.isValid(in: boardSize),
                         let square = getSquare(at: position) {
-                        reveal(from: square, in: boardSize)
+                        reveal(from: square)
+                    }
+                }
+            }
+        }
+    }
+    
+    func revealAll(isAWin: Bool = false) {
+        for i in 0..<boardSize.lines {
+            for j in 0..<boardSize.columns {
+                let position = Position(lin: i, col: j)
+                
+                if let square = getSquare(at: position), square.squareState == .unrevealed  {
+                    square.reveal()
+                    if square.isBomb, isAWin {
+                        square.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.4)
                     }
                 }
             }
@@ -103,9 +123,13 @@ class BoardView: UIStackView {
     }
     
     func performWinAnimation() {
+        revealAll(isAWin: true)
     }
     
     func performLoseAnimation() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.revealAll()
+        })
     }
 }
 
