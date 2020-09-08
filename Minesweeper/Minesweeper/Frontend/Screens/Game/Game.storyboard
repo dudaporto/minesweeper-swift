@@ -183,6 +183,7 @@
                         <outlet property="boardBackground" destination="WeA-Kh-5uF" id="dEf-E6-ky1"/>
                         <outlet property="boardContainer" destination="Aw6-L7-cEc" id="KQf-n0-oYZ"/>
                         <outlet property="boardHeightConstraint" destination="6QW-4u-nln" id="qoM-RU-I1I"/>
+                        <outlet property="flagModeButton" destination="OyW-wA-Rkx" id="Ybu-ft-0EY"/>
                         <outlet property="flagsLabel" destination="2WI-vD-xs4" id="0M8-Wr-Jkv"/>
                         <outlet property="restartButton" destination="veh-Z4-FNf" id="obz-vp-uhu"/>
                         <outlet property="timerLabel" destination="UGg-KB-Ldb" id="qrg-G0-8Cx"/>
