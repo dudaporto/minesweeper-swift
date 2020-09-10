@@ -230,4 +230,8 @@ extension GameViewController: DifficultyPickerViewControllerDelegate {
             startNewGame(difficulty: difficulty)
         }
     }
+    
+    func difficultyPickerDidClickAtBackToMenuButton() {
+        let _ = self.navigationController?.popToRootViewController(animated: true)
+    }
 }

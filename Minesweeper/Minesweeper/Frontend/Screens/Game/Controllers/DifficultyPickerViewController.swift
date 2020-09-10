@@ -10,6 +10,7 @@ import UIKit
 
 protocol DifficultyPickerViewControllerDelegate: NSObjectProtocol {
     func difficultyPickerDidSelectDifficulty(_ difficulty: Game.Difficulty)
+    func difficultyPickerDidClickAtBackToMenuButton()
 }
 
 class DifficultyPickerViewController: UIViewController {
@@ -50,8 +51,9 @@ class DifficultyPickerViewController: UIViewController {
     }
     
     @IBAction private func leaveToMenuButtonClicked(_ sender: Any) {
-        //TODO: go to Main
-        dismiss(animated: true)
+        dismiss(animated: true) {
+            self.delegate?.difficultyPickerDidClickAtBackToMenuButton()
+        }
     }
     
     @IBAction private func backgroundViewClicked(_ sender: Any) {
