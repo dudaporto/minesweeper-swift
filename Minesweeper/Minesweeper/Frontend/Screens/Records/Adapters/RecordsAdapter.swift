@@ -30,7 +30,7 @@ extension RecordsAdapter: UICollectionViewDataSource {
         case commonRecordsSection:
             return orderedRecords.count - 3
         default:
-            break
+            return 0
         }
     }
     
@@ -45,14 +45,15 @@ extension RecordsAdapter: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        switch section {
-        case topThreeSection:
-            return .zero
-        case commonRecordsSection:
-            return .zero
-        default:
-            return .zero
-        }
+        .zero
+//        switch section {
+//        case topThreeSection:
+//            return .zero
+//        case commonRecordsSection:
+//            return .zero
+//        default:
+//            return .zero
+//        }
     }
     
     func collectionView(
@@ -60,6 +61,6 @@ extension RecordsAdapter: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-        <#code#>
+        .zero
     }
 }

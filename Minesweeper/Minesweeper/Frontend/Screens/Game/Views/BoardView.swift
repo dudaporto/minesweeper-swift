@@ -34,22 +34,22 @@ class BoardView: UIStackView {
         commonInit()
     }
     
-    var numberOfLines = 0
+    var numberOfRows = 0
     var numberOfColumns = 0
     var isFlagModeActive = false
     
     var boardSize: Board.Size {
-        return Board.Size(lines: numberOfLines, columns: numberOfColumns)
+        return Board.Size(rows: numberOfRows, columns: numberOfColumns)
     }
     
     private(set) var squaresRevealed = 0
     private(set) var squaresFlagged = 0
     
     func setRows(boardSize: Board.Size) {
-        numberOfLines = boardSize.lines
+        numberOfRows = boardSize.rows
         numberOfColumns = boardSize.columns
         
-        for i in 0..<numberOfLines {
+        for i in 0..<numberOfRows {
             let row = UIStackView(arrangedSubviews: [])
             row.axis = .horizontal
             row.spacing = spacing
@@ -57,7 +57,7 @@ class BoardView: UIStackView {
             
             for j in 0..<numberOfColumns {
                 let square = BoardSquareButton(type: .system)
-                square.positionInBoard = Position(lin: i, col: j)
+                square.positionInBoard = Position(row: i, col: j)
                 square.delegate = self
                 row.addArrangedSubview(square)
             }
@@ -67,15 +67,15 @@ class BoardView: UIStackView {
     }
     
     func setValues(values: [[Int]]) {
-        for i in 0..<numberOfLines {
+        for i in 0..<numberOfRows {
             for j in 0..<numberOfColumns {
-                getSquare(at: Position(lin: i, col: j))?.value = values[i][j]
+                getSquare(at: Position(row: i, col: j))?.value = values[i][j]
             }
         }
     }
     
     func getSquare(at position: Position) -> BoardSquareButton? {
-        guard let row = arrangedSubviews[position.lin] as? UIStackView,
+        guard let row = arrangedSubviews[position.row] as? UIStackView,
             let square = row.arrangedSubviews[position.col] as? BoardSquareButton else {
                 return nil
         }
@@ -95,9 +95,9 @@ class BoardView: UIStackView {
             //check the neighbors
             for i in -1...1 {
                 for j in -1...1 {
-                    let lin = square.positionInBoard!.lin + i
+                    let row = square.positionInBoard!.row + i
                     let col = square.positionInBoard!.col + j
-                    let position = Position(lin: lin, col: col)
+                    let position = Position(row: row, col: col)
                     
                     if position.isValid(in: boardSize),
                         let square = getSquare(at: position) {
@@ -109,9 +109,9 @@ class BoardView: UIStackView {
     }
     
     func revealAll(isAWin: Bool = false) {
-        for i in 0..<boardSize.lines {
+        for i in 0..<boardSize.rows {
             for j in 0..<boardSize.columns {
-                let position = Position(lin: i, col: j)
+                let position = Position(row: i, col: j)
                 
                 if let square = getSquare(at: position), square.squareState == .unrevealed  {
                     square.reveal()
@@ -124,9 +124,9 @@ class BoardView: UIStackView {
     }
     
     func toogleFlagPlaceholderInAll() {
-        for i in 0..<boardSize.lines {
+        for i in 0..<boardSize.rows {
             for j in 0..<boardSize.columns {
-                let position = Position(lin: i, col: j)
+                let position = Position(row: i, col: j)
                 
                 if let square = getSquare(at: position), square.squareState != .revealed  {
                     square.toggleFlagPlaceholder()

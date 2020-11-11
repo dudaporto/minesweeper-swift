@@ -10,9 +10,9 @@ import Foundation
 
 class Board {
     struct Size {
-        //quantify of lines and columns in board
+        //quantify of rows and columns in board
         
-        let lines: Int
+        let rows: Int
         let columns: Int
     }
     
@@ -21,16 +21,16 @@ class Board {
     
     init(difficulty: Game.Difficulty, initialSquarePosition: Position) {
         currentDifficulty = difficulty
-        values = [[Int]](repeating: [Int](repeating: 0, count: difficulty.boardSize.columns), count: difficulty.boardSize.lines)
+        values = [[Int]](repeating: [Int](repeating: 0, count: difficulty.boardSize.columns), count: difficulty.boardSize.rows)
         generateBoardValues(initialSquarePosition)
     }
     
     private func generateBoardValues(_ initialSquarePosition: Position) {
         setBombs(initialSquarePosition)
 
-        for i in 0..<currentDifficulty.boardSize.lines {
+        for i in 0..<currentDifficulty.boardSize.rows {
             for j in 0..<currentDifficulty.boardSize.columns {
-                let currentPosition = Position(lin: i, col: j)
+                let currentPosition = Position(row: i, col: j)
                 
                 if !isBomb(position: currentPosition) {
                     values[i][j] = calculateNumberOfBombs(arround: currentPosition)
@@ -43,14 +43,14 @@ class Board {
         var bombsCount = 0
         
         while bombsCount < currentDifficulty.numberOfBombs {
-            let lin = Int.random(in: 0..<currentDifficulty.boardSize.lines)
+            let row = Int.random(in: 0..<currentDifficulty.boardSize.rows)
             let col = Int.random(in: 0..<currentDifficulty.boardSize.columns)
             
-            let position = Position(lin: lin, col: col)
+            let position = Position(row: row, col: col)
             
             // prevents the bomb from being in the first clicked square or its neighbors
             if position != initialSquarePosition, !position.isNeighbor(of: initialSquarePosition) {
-                values[lin][col] = -1
+                values[row][col] = -1
                 bombsCount += 1
             }
         }
@@ -62,9 +62,9 @@ class Board {
         //check all neighbors in the matrix
         for i in -1...1 {
             for j in -1...1 {
-                let lin = position.lin + i
+                let row = position.row + i
                 let col = position.col + j
-                let currentPosition = Position(lin: lin, col: col)
+                let currentPosition = Position(row: row, col: col)
                 
                 if currentPosition.isValid(in: currentDifficulty.boardSize), isBomb(position: currentPosition) {
                     bombsArround += 1
@@ -76,22 +76,22 @@ class Board {
     }
     
     private func isBomb(position: Position) -> Bool {
-        return values[position.lin][position.col] == -1
+        return values[position.row][position.col] == -1
     }
 }
 
 struct Position: Equatable {
-    let lin: Int
+    let row: Int
     let col: Int
     
     static func == (lhs: Position, rhs: Position) -> Bool {
         return
-            lhs.lin == rhs.lin && lhs.col == rhs.col
+            lhs.row == rhs.row && lhs.col == rhs.col
     }
     
     func isValid(in boardSize: Board.Size) -> Bool {
-        return lin >= 0 &&
-            lin < boardSize.lines &&
+        return row >= 0 &&
+            row < boardSize.rows &&
             col >= 0 &&
             col < boardSize.columns
     }
@@ -99,10 +99,10 @@ struct Position: Equatable {
     func isNeighbor(of other: Position) -> Bool {
         for i in -1...1 {
             for j in -1...1 {
-                let lin = self.lin + i
+                let row = self.row + i
                 let col = self.col + j
                 
-                if Position(lin: lin, col: col) == other {
+                if Position(row: row, col: col) == other {
                     return true
                 }
             }
@@ -111,7 +111,7 @@ struct Position: Equatable {
     }
     
     static var zero: Position {
-        return Position(lin: 0, col: 0)
+        return Position(row: 0, col: 0)
     }
 }
 

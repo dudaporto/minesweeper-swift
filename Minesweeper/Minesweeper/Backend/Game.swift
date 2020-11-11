@@ -28,16 +28,16 @@ final class Game: NSObject {
         var boardSize: Board.Size {
             switch self {
             case .easy:
-                return Board.Size(lines: 9, columns: 8)
+                return Board.Size(rows: 9, columns: 8)
             case .medium:
-                return Board.Size(lines: 12, columns: 9)
+                return Board.Size(rows: 12, columns: 9)
             case .hard:
-                return Board.Size(lines: 15, columns: 10)
+                return Board.Size(rows: 15, columns: 10)
             }
         }
         
         var totalCleanSquares: Int {
-            return (boardSize.lines * boardSize.columns) - numberOfBombs
+            return (boardSize.rows * boardSize.columns) - numberOfBombs
         }
     }
     

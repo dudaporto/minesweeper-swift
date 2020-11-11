@@ -61,13 +61,13 @@ class GameViewController: UIViewController {
     
     private func calculateBoardPrefferedHeight() {
         //calculates the height for subviews to be perfect squares
-        let numberOfLines = game.currentDifficulty.boardSize.lines
+        let numberOfRows = game.currentDifficulty.boardSize.rows
         let numberOfColumns = game.currentDifficulty.boardSize.columns
         
-        let lines = CGFloat(numberOfLines)
+        let rows = CGFloat(numberOfRows)
         let columns = CGFloat(numberOfColumns)
         let squaresWidth = (boardContainer.frame.width - squaresSpacing * (columns - 2)) / columns
-        let height: CGFloat = squaresWidth * lines + squaresSpacing * (lines - 2)
+        let height: CGFloat = squaresWidth * rows + squaresSpacing * (rows - 2)
         
         boardHeightConstraint.constant = height
     }
