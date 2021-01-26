@@ -10,19 +10,19 @@ import UIKit
 
 class RecordCell: UICollectionViewCell {
     
-    @IBOutlet private weak var userNameLabel: UILabel!
-    @IBOutlet private weak var timeInSecondsLabel: UILabel!
     @IBOutlet private weak var positionLabel: UILabel!
+    @IBOutlet private weak var timeInSecondsLabel: UILabel!
+    @IBOutlet private weak var userNameLabel: UILabel!
     
-    func setupCell(userName: String, timeInSeconds: Int, podiumPosition: Int) {
-        userNameLabel.text = userName
-        timeInSecondsLabel.text = "\(timeInSeconds) s"
+    func setupCell(record: Record, podiumPosition: Int) {
         positionLabel.text = "\(podiumPosition)"
+        timeInSecondsLabel.text = "\(record.timeInSeconds) s"
+        userNameLabel.text = record.ownerName
     }
     
     override func prepareForReuse() {
-        userNameLabel.text = ""
-        timeInSecondsLabel.text = ""
         positionLabel.text = ""
+        timeInSecondsLabel.text = ""
+        userNameLabel.text = ""
     }
 }

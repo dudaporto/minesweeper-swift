@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		6B0195282512E144002E8B3C /* Records.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0195272512E144002E8B3C /* Records.storyboard */; };
 		6B01952A2512E322002E8B3C /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0195292512E322002E8B3C /* RecordsViewController.swift */; };
-		6B01952D2512E48A002E8B3C /* TopThreeRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B01952C2512E48A002E8B3C /* TopThreeRecordCell.xib */; };
+		6B01952D2512E48A002E8B3C /* TopRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B01952C2512E48A002E8B3C /* TopRecordCell.xib */; };
 		6B01952F2512E903002E8B3C /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B01952E2512E903002E8B3C /* RecordCell.xib */; };
-		6B0195312512E9EE002E8B3C /* TopThreeRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0195302512E9EE002E8B3C /* TopThreeRecordCell.swift */; };
+		6B0195312512E9EE002E8B3C /* TopRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0195302512E9EE002E8B3C /* TopRecordCell.swift */; };
 		6B0195332512EE79002E8B3C /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0195322512EE79002E8B3C /* RecordCell.swift */; };
 		6B0195362512EF8C002E8B3C /* RecordsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0195352512EF8C002E8B3C /* RecordsAdapter.swift */; };
 		6B17BB8E24F8870A000C268D /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B17BB8D24F8870A000C268D /* Game.storyboard */; };
@@ -19,6 +19,7 @@
 		6B17BB9224F891A4000C268D /* DifficultyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17BB9124F891A4000C268D /* DifficultyPickerViewController.swift */; };
 		6B3699EA2500754000A68F94 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3699E92500754000A68F94 /* String.swift */; };
 		6B4726F424FDED7D00E4D26B /* DifficultyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4726F324FDED7D00E4D26B /* DifficultyManager.swift */; };
+		6B7614AB25BFA4C800CA6575 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7614AA25BFA4C800CA6575 /* NSObject.swift */; };
 		6B91ACC124F19E6A003A798F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACC024F19E6A003A798F /* AppDelegate.swift */; };
 		6B91ACC524F19E6A003A798F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACC424F19E6A003A798F /* GameViewController.swift */; };
 		6B91ACCA24F19E6A003A798F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B91ACC924F19E6A003A798F /* Assets.xcassets */; };
@@ -36,9 +37,9 @@
 /* Begin PBXFileReference section */
 		6B0195272512E144002E8B3C /* Records.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Records.storyboard; sourceTree = "<group>"; };
 		6B0195292512E322002E8B3C /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
-		6B01952C2512E48A002E8B3C /* TopThreeRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopThreeRecordCell.xib; sourceTree = "<group>"; };
+		6B01952C2512E48A002E8B3C /* TopRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopRecordCell.xib; sourceTree = "<group>"; };
 		6B01952E2512E903002E8B3C /* RecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
-		6B0195302512E9EE002E8B3C /* TopThreeRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopThreeRecordCell.swift; sourceTree = "<group>"; };
+		6B0195302512E9EE002E8B3C /* TopRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRecordCell.swift; sourceTree = "<group>"; };
 		6B0195322512EE79002E8B3C /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		6B0195352512EF8C002E8B3C /* RecordsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsAdapter.swift; sourceTree = "<group>"; };
 		6B17BB8D24F8870A000C268D /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
@@ -46,6 +47,7 @@
 		6B17BB9124F891A4000C268D /* DifficultyPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPickerViewController.swift; sourceTree = "<group>"; };
 		6B3699E92500754000A68F94 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		6B4726F324FDED7D00E4D26B /* DifficultyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyManager.swift; sourceTree = "<group>"; };
+		6B7614AA25BFA4C800CA6575 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
 		6B91ACBD24F19E6A003A798F /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B91ACC024F19E6A003A798F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B91ACC424F19E6A003A798F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -97,8 +99,8 @@
 			children = (
 				6B0195322512EE79002E8B3C /* RecordCell.swift */,
 				6B01952E2512E903002E8B3C /* RecordCell.xib */,
-				6B0195302512E9EE002E8B3C /* TopThreeRecordCell.swift */,
-				6B01952C2512E48A002E8B3C /* TopThreeRecordCell.xib */,
+				6B0195302512E9EE002E8B3C /* TopRecordCell.swift */,
+				6B01952C2512E48A002E8B3C /* TopRecordCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -151,7 +153,9 @@
 		6B91ACD424F1A2E5003A798F /* Frontend */ = {
 			isa = PBXGroup;
 			children = (
-				6B91ACD624F1A30F003A798F /* Screens */,
+				6B91ACD724F1A322003A798F /* Game */,
+				6B91ACE724F1C18A003A798F /* Main */,
+				6B0195252512E113002E8B3C /* Records */,
 			);
 			path = Frontend;
 			sourceTree = "<group>";
@@ -166,16 +170,6 @@
 				6B4726F624FDF71D00E4D26B /* Managers */,
 			);
 			path = Backend;
-			sourceTree = "<group>";
-		};
-		6B91ACD624F1A30F003A798F /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				6B91ACD724F1A322003A798F /* Game */,
-				6B91ACE724F1C18A003A798F /* Main */,
-				6B0195252512E113002E8B3C /* Records */,
-			);
-			path = Screens;
 			sourceTree = "<group>";
 		};
 		6B91ACD724F1A322003A798F /* Game */ = {
@@ -201,8 +195,9 @@
 		6B91ACD924F1A3CF003A798F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				6B91ACDA24F1A3E0003A798F /* UIView.swift */,
+				6B7614AA25BFA4C800CA6575 /* NSObject.swift */,
 				6B3699E92500754000A68F94 /* String.swift */,
+				6B91ACDA24F1A3E0003A798F /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -298,7 +293,7 @@
 				6B91ACCA24F19E6A003A798F /* Assets.xcassets in Resources */,
 				6B17BB8E24F8870A000C268D /* Game.storyboard in Resources */,
 				6B01952F2512E903002E8B3C /* RecordCell.xib in Resources */,
-				6B01952D2512E48A002E8B3C /* TopThreeRecordCell.xib in Resources */,
+				6B01952D2512E48A002E8B3C /* TopRecordCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,11 +305,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B91ACC524F19E6A003A798F /* GameViewController.swift in Sources */,
-				6B0195312512E9EE002E8B3C /* TopThreeRecordCell.swift in Sources */,
+				6B0195312512E9EE002E8B3C /* TopRecordCell.swift in Sources */,
 				6B0195362512EF8C002E8B3C /* RecordsAdapter.swift in Sources */,
 				6B4726F424FDED7D00E4D26B /* DifficultyManager.swift in Sources */,
 				6B91ACF024F1CB7E003A798F /* BoardSquareButton.swift in Sources */,
 				6B0195332512EE79002E8B3C /* RecordCell.swift in Sources */,
+				6B7614AB25BFA4C800CA6575 /* NSObject.swift in Sources */,
 				6B91ACDB24F1A3E0003A798F /* UIView.swift in Sources */,
 				6B17BB9224F891A4000C268D /* DifficultyPickerViewController.swift in Sources */,
 				6B91ACE124F1B94A003A798F /* Record.swift in Sources */,

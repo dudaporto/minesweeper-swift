@@ -9,12 +9,17 @@
 import UIKit
 
 class RecordsAdapter: NSObject {
-    let topThreeSection = 0
+    let topOneSection = 0
     let commonRecordsSection = 1
     let orderedRecords: [Record]
     
     init(collectionView: UICollectionView, orderedRecords: [Record]) {
         self.orderedRecords = orderedRecords
+    }
+    
+    private func registerCells(collectionView: UICollectionView) {
+        collectionView.register(TopRecordCell.self, forCellWithReuseIdentifier: TopRecordCell.className)
+        collectionView.register(RecordCell.self, forCellWithReuseIdentifier: RecordCell.className)
     }
 }
 
@@ -25,17 +30,33 @@ extension RecordsAdapter: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case topThreeSection:
-            return 3
+        case topOneSection:
+            return 1
         case commonRecordsSection:
-            return orderedRecords.count - 3
+            return orderedRecords.count - 1
         default:
             return 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let position = indexPath.item + indexPath.section
+        let record = orderedRecords[indexPath.item + indexPath.section]
+        
+        switch indexPath.section {
+        case topOneSection:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopRecordCell.className, for: indexPath) as! TopRecordCell
+            cell.setupCell(record: record, podiumPosition: position)
+            return cell
+            
+        case commonRecordsSection:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.className, for: indexPath) as! RecordCell
+            cell.setupCell(record: record, podiumPosition: position)
+            return cell
+            
+        default:
+            return UICollectionViewCell()
+        }
     }
 }
 
