@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ChR-kn-8Mx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ChR-kn-8Mx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,14 +38,14 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oU8-zp-aQv">
                                                 <rect key="frame" x="0.0" y="0.0" width="294" height="55"/>
-                                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                                                 <state key="normal" title="Easy">
-                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" systemColor="linkColor"/>
                                                 </state>
                                                 <state key="selected">
-                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" systemColor="linkColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -62,14 +64,14 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ghj-yC-cMn">
                                                 <rect key="frame" x="0.0" y="70" width="294" height="55.5"/>
-                                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                                                 <state key="normal" title="Medium">
-                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" systemColor="linkColor"/>
                                                 </state>
                                                 <state key="selected">
-                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" systemColor="linkColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -88,14 +90,14 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJu-Ed-htQ">
                                                 <rect key="frame" x="0.0" y="140.5" width="294" height="55.5"/>
-                                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                                                 <state key="normal" title="Hard">
-                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" systemColor="linkColor"/>
                                                 </state>
                                                 <state key="selected">
-                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" systemColor="linkColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -122,8 +124,9 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWY-6t-0XE" userLabel="Leave to menu">
                                                 <rect key="frame" x="0.0" y="0.0" width="139.5" height="55"/>
-                                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" image="chevron.left.2" catalog="system">
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <state key="normal" title="Exit game">
+                                                    <color key="titleColor" systemColor="systemBlueColor"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="regular"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -137,7 +140,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnP-1G-9ZP" userLabel="Check">
                                                 <rect key="frame" x="154.5" y="0.0" width="139.5" height="55"/>
-                                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <state key="normal" image="checkmark" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="regular"/>
                                                 </state>
@@ -156,7 +159,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="c1m-O4-mvC" firstAttribute="top" secondItem="jw2-DT-Uk3" secondAttribute="top" constant="30" id="6vt-Mk-kBU"/>
                                     <constraint firstItem="oLv-fx-s9z" firstAttribute="leading" secondItem="jw2-DT-Uk3" secondAttribute="leading" constant="30" id="HAc-hT-fyS"/>
@@ -177,6 +180,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="MOT-uy-h9o"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jw2-DT-Uk3" firstAttribute="leading" secondItem="MOT-uy-h9o" secondAttribute="leading" constant="30" id="15d-eC-kw4"/>
@@ -188,7 +192,6 @@
                             <constraint firstItem="MOT-uy-h9o" firstAttribute="trailing" secondItem="jw2-DT-Uk3" secondAttribute="trailing" constant="30" id="oJS-m8-fmQ"/>
                             <constraint firstItem="Cu1-wt-otc" firstAttribute="leading" secondItem="MOT-uy-h9o" secondAttribute="leading" id="xEh-LL-sYc"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="MOT-uy-h9o"/>
                     </view>
                     <connections>
                         <outlet property="easyButton" destination="oU8-zp-aQv" id="sik-N4-XSV"/>
@@ -208,6 +211,20 @@
     </scenes>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
-        <image name="chevron.left.2" catalog="system" width="128" height="105"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

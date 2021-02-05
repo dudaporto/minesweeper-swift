@@ -1,5 +1,5 @@
 //
-//  RecordCell.swift
+//  TopRecordCell.swift
 //  Minesweeper
 //
 //  Created by Maria Eduarda Porto on 05/02/21.
@@ -8,38 +8,30 @@
 
 import UIKit
 
-class RecordCell: UICollectionViewCell {
-    static let height: CGFloat = 70.0
-    
-    @IBOutlet private weak var ownerNameLabel: UILabel!
-    @IBOutlet private weak var positionLabel: UILabel!
-    @IBOutlet private weak var timeInSecondsLabel: UILabel!
+class TopRecordCell: UICollectionViewCell {
+    static let height: CGFloat = 80.0
 
-    var color: UIColor? {
-        didSet {
-            guard let color = color else {
-                return
-            }
-            
-            positionLabel.textColor = color
-            timeInSecondsLabel.textColor = color
-        }
-    }
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var ownerNameLabel: UILabel!
+    @IBOutlet private weak var timeInSecondsLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    func setup(with record: Record, and position: Int) {
+    
+    func setup(with record: Record) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yyyy")
+        
+        dateLabel.text = dateFormatter.string(from: record.date)
         ownerNameLabel.text = record.ownerName
-        positionLabel.text = "\(position)"
         timeInSecondsLabel.text = "\(record.timeInSeconds) s"
     }
     
     override func prepareForReuse() {
+        dateLabel.text = ""
         ownerNameLabel.text = ""
-        positionLabel.text = ""
         timeInSecondsLabel.text = ""
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 final class Game: NSObject {
-    enum Difficulty: String {
+    enum Difficulty: String, CaseIterable {
         case easy
         case medium
         case hard
@@ -38,6 +38,10 @@ final class Game: NSObject {
         
         var totalCleanSquares: Int {
             return (boardSize.rows * boardSize.columns) - numberOfBombs
+        }
+        
+        var title: String {
+            rawValue.capitalizeFirstChar()
         }
     }
     

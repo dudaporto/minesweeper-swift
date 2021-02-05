@@ -16,9 +16,9 @@ struct Record {
     
     static var mock: [Record] = [
         Record(date: Date(), difficulty: .easy, ownerName: "Duda", timeInSeconds: 190),
-        Record(date: Date(), difficulty: .easy, ownerName: "Gui", timeInSeconds: 198),
-        Record(date: Date(), difficulty: .easy, ownerName: "Duda", timeInSeconds: 215),
-        Record(date: Date(), difficulty: .easy, ownerName: "Roza", timeInSeconds: 221),
+        Record(date: Date(), difficulty: .medium, ownerName: "Gui", timeInSeconds: 198),
+        Record(date: Date(), difficulty: .medium, ownerName: "Duda", timeInSeconds: 215),
+        Record(date: Date(), difficulty: .hard, ownerName: "Roza", timeInSeconds: 221),
         Record(date: Date(), difficulty: .easy, ownerName: "User1", timeInSeconds: 236),
     ]
 }
