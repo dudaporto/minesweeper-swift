@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class Game: NSObject {
     enum Difficulty: String, CaseIterable {
@@ -14,14 +15,14 @@ final class Game: NSObject {
         case medium
         case hard
         
-        var numberOfBombs: Int {
+        var color: UIColor {
             switch self {
             case .easy:
-                return 14 //20% of the board
+                return .systemTeal
             case .medium:
-                return 22 //21% of the board
+                return .systemPurple
             case .hard:
-                return 33 //22% of the board
+                return .systemOrange
             }
         }
         
@@ -33,6 +34,17 @@ final class Game: NSObject {
                 return Board.Size(rows: 12, columns: 9)
             case .hard:
                 return Board.Size(rows: 15, columns: 10)
+            }
+        }
+        
+        var numberOfBombs: Int {
+            switch self {
+            case .easy:
+                return 14 //20% of the board
+            case .medium:
+                return 22 //21% of the board
+            case .hard:
+                return 33 //22% of the board
             }
         }
         

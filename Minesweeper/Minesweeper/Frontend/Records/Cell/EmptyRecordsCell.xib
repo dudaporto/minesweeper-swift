@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EmptyRecordsCell" id="gTV-IL-0wX" customClass="EmptyRecordsCell" customModule="Minesweeper" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="399" height="280"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="399" height="280"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3PQ-Tj-5xX">
+                        <rect key="frame" x="30" y="68.5" width="339" height="143.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any record for the selected difficulty yet :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExY-gb-WuL">
+                                <rect key="frame" x="0.0" y="0.0" width="339" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" systemColor="systemBlueColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How about playing some matches?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSq-V1-u2P">
+                                <rect key="frame" x="0.0" y="63" width="339" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fg2-Wk-Vga">
+                                <rect key="frame" x="139.5" y="103.5" width="60" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="1KS-De-KEj"/>
+                                    <constraint firstAttribute="height" constant="40" id="2PJ-l7-qjo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Play"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="linkColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playButtonClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="fDr-UA-exp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ExY-gb-WuL" firstAttribute="top" secondItem="3PQ-Tj-5xX" secondAttribute="top" id="5X6-mH-hgb"/>
+                            <constraint firstItem="Fg2-Wk-Vga" firstAttribute="centerX" secondItem="3PQ-Tj-5xX" secondAttribute="centerX" id="9yp-zG-2u0"/>
+                            <constraint firstAttribute="trailing" secondItem="FSq-V1-u2P" secondAttribute="trailing" id="JDL-cB-llK"/>
+                            <constraint firstItem="ExY-gb-WuL" firstAttribute="leading" secondItem="3PQ-Tj-5xX" secondAttribute="leading" id="NDn-SY-8bw"/>
+                            <constraint firstItem="FSq-V1-u2P" firstAttribute="top" secondItem="ExY-gb-WuL" secondAttribute="bottom" constant="15" id="ZCw-Oc-KN4"/>
+                            <constraint firstItem="Fg2-Wk-Vga" firstAttribute="top" secondItem="FSq-V1-u2P" secondAttribute="bottom" constant="20" id="heh-2q-7Ih"/>
+                            <constraint firstItem="FSq-V1-u2P" firstAttribute="leading" secondItem="3PQ-Tj-5xX" secondAttribute="leading" id="kog-Fg-WpK"/>
+                            <constraint firstAttribute="trailing" secondItem="ExY-gb-WuL" secondAttribute="trailing" id="nB2-wO-mb3"/>
+                            <constraint firstAttribute="bottom" secondItem="Fg2-Wk-Vga" secondAttribute="bottom" id="raT-Oy-Xab"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3PQ-Tj-5xX" secondAttribute="trailing" constant="30" id="S0J-vv-Gxu"/>
+                <constraint firstItem="3PQ-Tj-5xX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="Y1e-6A-aXP"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3PQ-Tj-5xX" secondAttribute="bottom" id="YQL-dz-tya"/>
+                <constraint firstItem="3PQ-Tj-5xX" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="nke-66-rsZ"/>
+                <constraint firstItem="3PQ-Tj-5xX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="top" id="uAW-vb-hOV"/>
+            </constraints>
+            <size key="customSize" width="399" height="280"/>
+            <connections>
+                <outlet property="messageLabel" destination="ExY-gb-WuL" id="yAi-Qg-cke"/>
+                <outlet property="playButton" destination="Fg2-Wk-Vga" id="bCX-Pk-UVo"/>
+            </connections>
+            <point key="canvasLocation" x="390.57971014492756" y="227.67857142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

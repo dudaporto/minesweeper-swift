@@ -11,12 +11,15 @@ import UIKit
 class GameViewController: UIViewController {
     private let squaresSpacing: CGFloat = 2
 
-    @IBOutlet private weak var restartButton: UIButton!
-    @IBOutlet private weak var flagModeButton: UIButton!
-    @IBOutlet private weak var boardContainer: UIView!
     @IBOutlet private weak var boardBackground: UIView!
+    @IBOutlet private weak var boardContainer: UIView!
     @IBOutlet private weak var boardHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var flagModeButton: UIButton!
     @IBOutlet private weak var flagsLabel: UILabel!
+    @IBOutlet private weak var headerBorderView: UIView!
+    @IBOutlet private weak var headerBorderWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var optionsButton: UIButton!
+    @IBOutlet private weak var restartButton: UIButton!
     @IBOutlet private weak var timerLabel: UILabel!
     
     var game: Game!
@@ -34,7 +37,11 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startNewGame(difficulty: DifficultyManager.getSelectedDifficulty())
+        navigationController?.isNavigationBarHidden = true
+        
+        let initialDifficulty = DifficultyManager.getSelectedDifficulty()
+        setupDifficultyColor(initialDifficulty)
+        startNewGame(difficulty: initialDifficulty)
     }
     
     override func viewDidLayoutSubviews() {
@@ -43,13 +50,13 @@ class GameViewController: UIViewController {
         calculateBoardPrefferedHeight()
     }
     
-    @IBAction private func restartButtonAction(_ sender: Any) {
-        startNewGame()
-    }
-
     @IBAction private func flagModeAction(_ sender: Any) {
         isFlagModeActive = !isFlagModeActive
         boardView?.isFlagModeActive = isFlagModeActive
+    }
+    
+    @IBAction private func restartButtonAction(_ sender: Any) {
+        startNewGame()
     }
     
     @IBSegueAction func showDifficultyPicker(_ coder: NSCoder) -> UIViewController? {
@@ -72,6 +79,20 @@ class GameViewController: UIViewController {
         boardHeightConstraint.constant = height
     }
     
+    private func initBoardView() {
+        let boardView = BoardView(frame: boardContainer.frame)
+        boardView.spacing = squaresSpacing
+        boardView.setRows(boardSize: game.currentDifficulty.boardSize)
+        boardView.delegate = self
+        boardContainer.addSubview(boardView)
+        
+        NSLayoutConstraint.activate([
+            boardView.heightAnchor.constraint(equalTo: boardContainer.heightAnchor),
+            boardView.widthAnchor.constraint(equalTo: boardContainer.widthAnchor),
+            boardView.centerXAnchor.constraint(equalTo: boardContainer.centerXAnchor)
+        ])
+    }
+    
     private func startNewGame(difficulty: Game.Difficulty? = nil) {
         invalidateTimer()
         isFlagModeActive = false
@@ -89,25 +110,19 @@ class GameViewController: UIViewController {
         calculateBoardPrefferedHeight()
         boardContainer.isUserInteractionEnabled = true
         setupRestartButton(isEnabled: false)
-    }
-    
-    private func initBoardView() {
-        let boardView = BoardView(frame: boardContainer.frame)
-        boardView.spacing = squaresSpacing
-        boardView.setRows(boardSize: game.currentDifficulty.boardSize)
-        boardView.delegate = self
-        boardContainer.addSubview(boardView)
-        
-        NSLayoutConstraint.activate([
-            boardView.heightAnchor.constraint(equalTo: boardContainer.heightAnchor),
-            boardView.widthAnchor.constraint(equalTo: boardContainer.widthAnchor),
-            boardView.centerXAnchor.constraint(equalTo: boardContainer.centerXAnchor)
-        ])
+        performHeaderAnimation()
     }
     
     private func setupRestartButton(isEnabled: Bool) {
         restartButton.isEnabled = isEnabled
         restartButton.alpha = isEnabled ? 1 : 0.7
+    }
+    
+    private func setupDifficultyColor(_ difficulty: Game.Difficulty) {
+        headerBorderView.backgroundColor = difficulty.color
+        optionsButton.tintColor = difficulty.color
+        flagModeButton.tintColor = difficulty.color
+        restartButton.tintColor = difficulty.color
     }
     
     private func updateFlagMode() {
@@ -121,6 +136,25 @@ class GameViewController: UIViewController {
             flagsLabel.textColor = .white
             timerLabel.textColor = .white
         }
+    }
+    
+    private func performHeaderAnimation() {
+        headerBorderWidthConstraint.constant = self.view.frame.width
+        
+        UIView.animate(
+           withDuration: 0.7,
+           delay: 0,
+           options: .curveEaseIn,
+           animations: {
+            self.headerBorderView.layoutIfNeeded()
+           }, completion: { _ in
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.headerBorderView.alpha = 0
+                }, completion: { _ in
+                    self.headerBorderWidthConstraint.constant = 0
+                    self.headerBorderView.alpha = 1
+                })
+           })
     }
 
 //MARK: -  Timer
@@ -227,6 +261,7 @@ extension GameViewController: BoardViewDelegate {
 extension GameViewController: DifficultyPickerViewControllerDelegate {
     func difficultyPickerDidSelectDifficulty(_ difficulty: Game.Difficulty) {
         if difficulty != game.currentDifficulty {
+            setupDifficultyColor(difficulty)
             startNewGame(difficulty: difficulty)
         }
     }

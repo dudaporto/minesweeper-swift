@@ -22,7 +22,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
-                                    <segue destination="xuA-E2-rjC" kind="show" id="iqx-gq-8zl"/>
+                                    <segue destination="xuA-E2-rjC" kind="show" identifier="showGameViewController" id="iqx-gq-8zl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeZ-rr-bTO">
@@ -31,7 +31,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Records"/>
                                 <connections>
-                                    <segue destination="guE-W3-Dqh" kind="show" id="RKF-cW-zsT"/>
+                                    <segue destination="guE-W3-Dqh" kind="show" identifier="showRecordsViewController" id="RKF-cW-zsT"/>
                                 </connections>
                             </button>
                         </subviews>
