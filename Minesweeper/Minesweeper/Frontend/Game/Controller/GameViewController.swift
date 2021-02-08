@@ -16,8 +16,6 @@ class GameViewController: UIViewController {
     @IBOutlet private weak var boardHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var flagModeButton: UIButton!
     @IBOutlet private weak var flagsLabel: UILabel!
-    @IBOutlet private weak var headerBorderView: UIView!
-    @IBOutlet private weak var headerBorderWidthConstraint: NSLayoutConstraint!
     @IBOutlet private weak var optionsButton: UIButton!
     @IBOutlet private weak var restartButton: UIButton!
     @IBOutlet private weak var timerLabel: UILabel!
@@ -37,7 +35,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.isNavigationBarHidden = true
+        setupNavigationBar()
         
         let initialDifficulty = DifficultyManager.getSelectedDifficulty()
         setupDifficultyColor(initialDifficulty)
@@ -48,6 +46,14 @@ class GameViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         calculateBoardPrefferedHeight()
+    }
+    
+    private func setupNavigationBar() {
+        title = "Game"
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     @IBAction private func flagModeAction(_ sender: Any) {
@@ -95,6 +101,7 @@ class GameViewController: UIViewController {
     
     private func startNewGame(difficulty: Game.Difficulty? = nil) {
         invalidateTimer()
+        flagModeButton.isEnabled = true
         isFlagModeActive = false
         
         let difficulty = difficulty ?? game.currentDifficulty
@@ -110,7 +117,6 @@ class GameViewController: UIViewController {
         calculateBoardPrefferedHeight()
         boardContainer.isUserInteractionEnabled = true
         setupRestartButton(isEnabled: false)
-        performHeaderAnimation()
     }
     
     private func setupRestartButton(isEnabled: Bool) {
@@ -119,7 +125,7 @@ class GameViewController: UIViewController {
     }
     
     private func setupDifficultyColor(_ difficulty: Game.Difficulty) {
-        headerBorderView.backgroundColor = difficulty.color
+        navigationController?.navigationBar.tintColor = difficulty.color
         optionsButton.tintColor = difficulty.color
         flagModeButton.tintColor = difficulty.color
         restartButton.tintColor = difficulty.color
@@ -136,25 +142,6 @@ class GameViewController: UIViewController {
             flagsLabel.textColor = .white
             timerLabel.textColor = .white
         }
-    }
-    
-    private func performHeaderAnimation() {
-        headerBorderWidthConstraint.constant = self.view.frame.width
-        
-        UIView.animate(
-           withDuration: 0.7,
-           delay: 0,
-           options: .curveEaseIn,
-           animations: {
-            self.headerBorderView.layoutIfNeeded()
-           }, completion: { _ in
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.headerBorderView.alpha = 0
-                }, completion: { _ in
-                    self.headerBorderWidthConstraint.constant = 0
-                    self.headerBorderView.alpha = 1
-                })
-           })
     }
 
 //MARK: -  Timer
@@ -199,6 +186,7 @@ class GameViewController: UIViewController {
     }
     
     private func didLoseGame() {
+        flagModeButton.isEnabled = false
         timer?.invalidate()
         
         let alert = UIAlertController(title: "VOCÊ PERDEU!", message: "Deseja jogar novamente?", preferredStyle: .alert)

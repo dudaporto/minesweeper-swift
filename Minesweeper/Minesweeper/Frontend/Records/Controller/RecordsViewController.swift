@@ -61,6 +61,7 @@ class RecordsViewController: UIViewController {
         title = "Records"
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.tintColor = .link
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
     }

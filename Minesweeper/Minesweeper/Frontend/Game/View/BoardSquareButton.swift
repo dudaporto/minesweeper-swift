@@ -46,11 +46,11 @@ class BoardSquareButton: UIButton {
         longGesture.minimumPressDuration = 0.15
         addGestureRecognizer(longGesture)
         addTarget(self, action: #selector(click), for: .touchUpInside)
-        
-        titleLabel!.font = UIFont.systemFont(ofSize: 14, weight: .bold)
     }
     
     private func setupStyle() {
+        titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        
         switch value {
         case 1:
             self.setTitleColor(.systemRed, for: [])

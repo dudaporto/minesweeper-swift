@@ -145,8 +145,8 @@
 		6B91ACD724F1A322003A798F /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				6B17BB8D24F8870A000C268D /* Game.storyboard */,
 				6B17BB8F24F8914B000C268D /* DifficultyPicker.storyboard */,
+				6B17BB8D24F8870A000C268D /* Game.storyboard */,
 				6B91ACD824F1A328003A798F /* Controller */,
 				6B91ACE424F1BD26003A798F /* View */,
 			);
@@ -156,8 +156,8 @@
 		6B91ACD824F1A328003A798F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6B91ACC424F19E6A003A798F /* GameViewController.swift */,
 				6B17BB9124F891A4000C268D /* DifficultyPickerViewController.swift */,
+				6B91ACC424F19E6A003A798F /* GameViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

@@ -10,7 +10,6 @@ import UIKit
 
 protocol DifficultyPickerViewControllerDelegate: NSObjectProtocol {
     func difficultyPickerDidSelectDifficulty(_ difficulty: Game.Difficulty)
-    func difficultyPickerDidClickAtBackToMenuButton()
 }
 
 class DifficultyPickerViewController: UIViewController {
@@ -23,17 +22,17 @@ class DifficultyPickerViewController: UIViewController {
     var selectedDifficulty: Game.Difficulty = .easy
     
     private func updateSelectedButton() {
-        easyButton.borderColor = .clear
-        mediumButton.borderColor = .clear
-        hardButton.borderColor = .clear
+        clearButton(easyButton)
+        clearButton(mediumButton)
+        clearButton(hardButton)
         
         switch selectedDifficulty {
         case .easy:
-            easyButton.borderColor = .link
+            selectButton(easyButton)
         case .medium:
-            mediumButton.borderColor = .link
+            selectButton(mediumButton)
         case .hard:
-            hardButton.borderColor = .link
+            selectButton(hardButton)
         }
     }
     
@@ -41,6 +40,16 @@ class DifficultyPickerViewController: UIViewController {
         super.viewDidLoad()
         
         updateSelectedButton()
+    }
+    
+    private func clearButton(_ button: UIButton) {
+        button.borderColor = .clear
+        button.setTitleColor(.link, for: .normal)
+    }
+    
+    private func selectButton(_ button: UIButton) {
+        button.borderColor = selectedDifficulty.color
+        button.setTitleColor(selectedDifficulty.color, for: .normal)
     }
     
     @IBAction private func checkButtonClicked(_ sender: Any) {
@@ -51,9 +60,7 @@ class DifficultyPickerViewController: UIViewController {
     }
     
     @IBAction private func leaveToMenuButtonClicked(_ sender: Any) {
-        dismiss(animated: true) {
-            self.delegate?.difficultyPickerDidClickAtBackToMenuButton()
-        }
+        dismiss(animated: true)
     }
     
     @IBAction private func backgroundViewClicked(_ sender: Any) {
@@ -75,3 +82,28 @@ class DifficultyPickerViewController: UIViewController {
         updateSelectedButton()
     }
 }
+
+class CheckButton: UIButton {
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                borderColor = .systemGreen
+            } else {
+                borderColor = .clear
+            }
+        }
+    }
+}
+
+class CloseButton: UIButton {
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                borderColor = .systemRed
+            } else {
+                borderColor = .clear
+            }
+        }
+    }
+}
+
