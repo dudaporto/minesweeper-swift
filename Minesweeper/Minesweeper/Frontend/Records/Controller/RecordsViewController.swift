@@ -34,6 +34,7 @@ class RecordsViewController: UIViewController {
         
         setupAdapter()
         setupNavigationBar()
+        setupDifficultyColor()
         setupSegmentedControl()
         
         collectionView.delegate = adapter
@@ -61,7 +62,6 @@ class RecordsViewController: UIViewController {
         title = "Records"
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.tintColor = .link
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
     }
@@ -72,13 +72,29 @@ class RecordsViewController: UIViewController {
         }
     }
     
+    private func setupDifficultyColor() {
+        navigationController?.navigationBar.tintColor = currentSelectedDifficulty.color
+        navigationItem.rightBarButtonItem?.tintColor = currentSelectedDifficulty.color
+    }
+    
     @IBAction private func segmentedControlValueDidChange(_ sendey: Any) {
+        setupDifficultyColor()
         adapter.currentDifficulty = currentSelectedDifficulty
         collectionView.reloadData()
     }
     
     @IBAction private func deleteRecordsButtonClicked(_ sendey: Any) {
-        print("TODO: Delete all records")
+        guard !allRecords.isEmpty else {
+            return
+        }
+        
+        let alert = UIAlertController(title: "Clear data", message: "Delete all records?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .destructive))
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            print("TODO: Delete all records")
+        }))
+        
+        present(alert, animated: true)
     }
 }
 

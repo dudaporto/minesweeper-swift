@@ -88,8 +88,10 @@ class CheckButton: UIButton {
         didSet {
             if isHighlighted {
                 borderColor = .systemGreen
+                tintColor = .systemGreen
             } else {
                 borderColor = .clear
+                tintColor = .systemBlue
             }
         }
     }
@@ -100,8 +102,10 @@ class CloseButton: UIButton {
         didSet {
             if isHighlighted {
                 borderColor = .systemRed
+                tintColor = .systemRed
             } else {
                 borderColor = .clear
+                tintColor = .systemBlue
             }
         }
     }

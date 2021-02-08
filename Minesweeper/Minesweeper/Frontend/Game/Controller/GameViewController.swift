@@ -171,6 +171,7 @@ class GameViewController: UIViewController {
     }
     
     private func didWinGame() {
+        flagModeButton.isEnabled = false
         timer?.invalidate()
         
         let alert = UIAlertController(title: "VOCÊ GANHOU!", message: "Deseja jogar novamente?", preferredStyle: .alert)
