@@ -53,7 +53,7 @@ final class Game: NSObject {
         }
         
         var title: String {
-            rawValue.capitalizeFirstChar()
+            NSLocalizedString(rawValue, comment: "")
         }
     }
     

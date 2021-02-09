@@ -49,7 +49,7 @@ class GameViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        title = "Game"
+        title = NSLocalizedString("game_title", comment: "")
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -85,7 +85,7 @@ class GameViewController: UIViewController {
         boardHeightConstraint.constant = height
     }
     
-    private func initBoardView() {
+    private func createBoardView() {
         let boardView = BoardView(frame: boardContainer.frame)
         boardView.spacing = squaresSpacing
         boardView.setRows(boardSize: game.currentDifficulty.boardSize)
@@ -113,7 +113,7 @@ class GameViewController: UIViewController {
             view.removeFromSuperview()
         })
         
-        initBoardView()
+        createBoardView()
         calculateBoardPrefferedHeight()
         boardContainer.isUserInteractionEnabled = true
         setupRestartButton(isEnabled: false)

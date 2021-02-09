@@ -32,6 +32,9 @@
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="game_difficulty_picker_title"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oLv-fx-s9z" userLabel="Levels">
                                         <rect key="frame" x="30" y="81.5" width="294" height="196"/>
@@ -57,6 +60,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="easy"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="easyButtonClicked:" destination="ChR-kn-8Mx" eventType="touchUpInside" id="teg-5H-m3y"/>
@@ -83,6 +87,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="medium"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="mediumButtonClicked:" destination="ChR-kn-8Mx" eventType="touchUpInside" id="Pjv-lt-jhQ"/>
@@ -109,6 +114,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="hard"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="hardButtonClicked:" destination="ChR-kn-8Mx" eventType="touchUpInside" id="sa5-Fl-tIA"/>

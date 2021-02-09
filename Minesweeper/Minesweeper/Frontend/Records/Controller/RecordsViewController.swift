@@ -59,7 +59,7 @@ class RecordsViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        title = "Records"
+        title = NSLocalizedString("records_title", comment: "")
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -84,15 +84,31 @@ class RecordsViewController: UIViewController {
     }
     
     @IBAction private func deleteRecordsButtonClicked(_ sendey: Any) {
-        guard !allRecords.isEmpty else {
-            return
-        }
+//        guard !allRecords.isEmpty else {
+//            return
+//        }
         
-        let alert = UIAlertController(title: "Clear data", message: "Delete all records?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "No", style: .destructive))
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
-            print("TODO: Delete all records")
-        }))
+        let alert = UIAlertController(
+            title: NSLocalizedString("records_delete_alert_title", comment: ""),
+            message: NSLocalizedString("records_delete_alert_message", comment: ""),
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("records_delete_alert_negative_option", comment: ""),
+                style: .destructive)
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("records_delete_alert_positive_option", comment: ""),
+                style: .default,
+                handler: { _ in
+                    print("TODO: Delete all records")
+                }
+            )
+        )
         
         present(alert, animated: true)
     }

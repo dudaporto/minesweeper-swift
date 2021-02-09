@@ -34,6 +34,7 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" systemColor="linkColor"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="play_button_title"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="xuA-E2-rjC" kind="show" identifier="showGameViewController" id="iqx-gq-8zl"/>
@@ -53,6 +54,7 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" systemColor="linkColor"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="records_button_title"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="guE-W3-Dqh" kind="show" identifier="showRecordsViewController" id="RKF-cW-zsT"/>

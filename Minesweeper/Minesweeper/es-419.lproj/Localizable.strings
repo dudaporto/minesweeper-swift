@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Minesweeper
+
+  Created by Maria Eduarda Porto on 08/02/21.
+  Copyright © 2021 Maria Eduarda Porto. All rights reserved.
+*/
+
+//MARK: - Main
+"play_button_title" = "Jugar";
+"records_button_title" = "Récords";
+
+//MARK: - Game
+"game_title" = "Juego";
+"game_difficulty_picker_title" = "Elige dificultad";
+
+//MARK: - Difficulties
+"easy" = "Fácil";
+"medium" = "Medio";
+"hard" = "Difícil";
+
+//MARK: - Records
+"records_delete_alert_message" = "¿Eliminar todos los récords?";
+"records_delete_alert_negative_option" = "No";
+"records_delete_alert_positive_option" = "Sí";
+"records_delete_alert_title" = "Borrar datos";
+"records_empty_state_call_to_game" = "¿Qué tal jugar algunos partidos?";
+"records_empty_state_message" = "Aún no tienes ningún registro para la dificultad seleccionada :(";
+"records_empty_state_play_button_title" = "Jugar";
+"records_title" = "Récords";
