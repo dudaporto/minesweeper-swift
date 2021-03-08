@@ -10,12 +10,15 @@ import UIKit
 
 class GameViewController: UIViewController {
     private let squaresSpacing: CGFloat = 2
+    private let animationDuration: TimeInterval = 0.25
 
     @IBOutlet private weak var boardBackground: UIView!
     @IBOutlet private weak var boardContainer: UIView!
     @IBOutlet private weak var boardHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var flagModeButton: UIButton!
     @IBOutlet private weak var flagsLabel: UILabel!
+    @IBOutlet private weak var headerBottomLine: UIView!
+    @IBOutlet private weak var headerBottomLineWidthConstraint: NSLayoutConstraint!
     @IBOutlet private weak var optionsButton: UIButton!
     @IBOutlet private weak var restartButton: UIButton!
     @IBOutlet private weak var timerLabel: UILabel!
@@ -44,7 +47,6 @@ class GameViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         calculateBoardPrefferedHeight()
     }
     
@@ -85,18 +87,32 @@ class GameViewController: UIViewController {
         boardHeightConstraint.constant = height
     }
     
-    private func createBoardView() {
+    private func setBoardView() {
         let boardView = BoardView(frame: boardContainer.frame)
         boardView.spacing = squaresSpacing
         boardView.setRows(boardSize: game.currentDifficulty.boardSize)
         boardView.delegate = self
-        boardContainer.addSubview(boardView)
+        
+        UIView.transition(
+            with: boardContainer,
+            duration: animationDuration,
+            options: .transitionCrossDissolve, animations: {
+                self.boardContainer.subviews.forEach({ view in
+                    view.removeFromSuperview()
+                })
+                self.boardContainer.addSubview(boardView)
+            }, completion: { _ in
+                self.animateHeaderBottomLine()
+            })
         
         NSLayoutConstraint.activate([
             boardView.heightAnchor.constraint(equalTo: boardContainer.heightAnchor),
             boardView.widthAnchor.constraint(equalTo: boardContainer.widthAnchor),
             boardView.centerXAnchor.constraint(equalTo: boardContainer.centerXAnchor)
         ])
+        
+        calculateBoardPrefferedHeight()
+        boardContainer.isUserInteractionEnabled = true
     }
     
     private func startNewGame(difficulty: Game.Difficulty? = nil) {
@@ -109,14 +125,23 @@ class GameViewController: UIViewController {
         
         flagsLabel.text = "\(difficulty.numberOfBombs)".addLeadingZeros(stringLength: 3)
         
-        boardContainer.subviews.forEach({ view in
-            view.removeFromSuperview()
-        })
-        
-        createBoardView()
-        calculateBoardPrefferedHeight()
-        boardContainer.isUserInteractionEnabled = true
+        setBoardView()
         setupRestartButton(isEnabled: false)
+    }
+    
+    private func animateHeaderBottomLine() {
+        self.headerBottomLineWidthConstraint.constant = self.view.frame.width
+        
+        UIView.animate(withDuration: animationDuration, animations: {
+            self.view.layoutIfNeeded()
+        }, completion:  { _ in
+            UIView.animate(withDuration: self.animationDuration, animations: {
+                self.headerBottomLine.alpha = 0
+            }, completion: { _ in
+                self.headerBottomLineWidthConstraint.constant = 0
+                self.headerBottomLine.alpha = 1
+            })
+        })
     }
     
     private func setupRestartButton(isEnabled: Bool) {
@@ -128,6 +153,7 @@ class GameViewController: UIViewController {
         navigationController?.navigationBar.tintColor = difficulty.color
         optionsButton.tintColor = difficulty.color
         flagModeButton.tintColor = difficulty.color
+        headerBottomLine.backgroundColor = difficulty.color
         restartButton.tintColor = difficulty.color
     }
     
