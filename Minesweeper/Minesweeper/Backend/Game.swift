@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-final class Game: NSObject {
+struct Game {
     enum Difficulty: String, CaseIterable {
         case easy
         case medium

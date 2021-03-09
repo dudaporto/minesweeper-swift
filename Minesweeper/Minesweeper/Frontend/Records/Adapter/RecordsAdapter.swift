@@ -115,7 +115,7 @@ extension RecordsAdapter: UICollectionViewDelegateFlowLayout {
         
         switch section {
         case .emptyState:
-            let height = collectionView.frame.height - collectionView.contentInset.top - 50
+            let height = collectionView.frame.height - collectionView.contentInset.top
             return CGSize(width: collectionView.frame.width, height: height)
             
         case .records:

@@ -22,6 +22,7 @@
 		6B4BEE1425CE1C9B00C746C8 /* EmptyRecordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BEE1225CE1C9B00C746C8 /* EmptyRecordsCell.swift */; };
 		6B4BEE1525CE1C9B00C746C8 /* EmptyRecordsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B4BEE1325CE1C9B00C746C8 /* EmptyRecordsCell.xib */; };
 		6B7614AB25BFA4C800CA6575 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7614AA25BFA4C800CA6575 /* NSObject.swift */; };
+		6B7C631D25F6EB2900F16611 /* earthorbiter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B7C631C25F6EB2900F16611 /* earthorbiter.ttf */; };
 		6B91ACC124F19E6A003A798F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACC024F19E6A003A798F /* AppDelegate.swift */; };
 		6B91ACC524F19E6A003A798F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91ACC424F19E6A003A798F /* GameViewController.swift */; };
 		6B91ACCA24F19E6A003A798F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B91ACC924F19E6A003A798F /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		6B4BEE1225CE1C9B00C746C8 /* EmptyRecordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRecordsCell.swift; sourceTree = "<group>"; };
 		6B4BEE1325CE1C9B00C746C8 /* EmptyRecordsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyRecordsCell.xib; sourceTree = "<group>"; };
 		6B7614AA25BFA4C800CA6575 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		6B7C631C25F6EB2900F16611 /* earthorbiter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = earthorbiter.ttf; sourceTree = "<group>"; };
 		6B91ACBD24F19E6A003A798F /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B91ACC024F19E6A003A798F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B91ACC424F19E6A003A798F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		6B7C631025F6E80200F16611 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				6B7C631C25F6EB2900F16611 /* earthorbiter.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		6B91ACB424F19E6A003A798F = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +150,7 @@
 		6B91ACD424F1A2E5003A798F /* Frontend */ = {
 			isa = PBXGroup;
 			children = (
+				6B7C631025F6E80200F16611 /* Font */,
 				6B91ACD724F1A322003A798F /* Game */,
 				6B91ACE724F1C18A003A798F /* Main */,
 				6BB8CBCF25CD8BEA00144138 /* Records */,
@@ -325,6 +336,7 @@
 				6B91ACEE24F1C651003A798F /* LaunchScreen.storyboard in Resources */,
 				6B4BEE0B25CDEA1F00C746C8 /* TopRecordCell.xib in Resources */,
 				6B43331125D2110A00459929 /* Localizable.strings in Resources */,
+				6B7C631D25F6EB2900F16611 /* earthorbiter.ttf in Resources */,
 				6B91ACCA24F19E6A003A798F /* Assets.xcassets in Resources */,
 				6B17BB8E24F8870A000C268D /* Game.storyboard in Resources */,
 				6BB8CBE025CD90F000144138 /* RecordCell.xib in Resources */,
