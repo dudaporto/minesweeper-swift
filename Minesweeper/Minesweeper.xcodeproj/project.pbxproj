@@ -175,19 +175,19 @@
 			children = (
 				6B17BB8F24F8914B000C268D /* DifficultyPicker.storyboard */,
 				6B17BB8D24F8870A000C268D /* Game.storyboard */,
-				6B91ACD824F1A328003A798F /* Controller */,
-				6B91ACE424F1BD26003A798F /* View */,
+				6B91ACD824F1A328003A798F /* Controllers */,
+				6B91ACE424F1BD26003A798F /* Views */,
 			);
 			path = Game;
 			sourceTree = "<group>";
 		};
-		6B91ACD824F1A328003A798F /* Controller */ = {
+		6B91ACD824F1A328003A798F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				6B17BB9124F891A4000C268D /* DifficultyPickerViewController.swift */,
 				6B91ACC424F19E6A003A798F /* GameViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		6B91ACD924F1A3CF003A798F /* Extension */ = {
@@ -204,60 +204,60 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		6B91ACE424F1BD26003A798F /* View */ = {
+		6B91ACE424F1BD26003A798F /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				6B91ACE524F1BD3F003A798F /* BoardView.swift */,
 				6B91ACEF24F1CB7E003A798F /* BoardSquareButton.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6B91ACE724F1C18A003A798F /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				6B91ACE824F1C1A3003A798F /* Main.storyboard */,
-				6B91ACEA24F1C1AA003A798F /* Controller */,
+				6B91ACEA24F1C1AA003A798F /* Controllers */,
 			);
 			path = Main;
 			sourceTree = "<group>";
 		};
-		6B91ACEA24F1C1AA003A798F /* Controller */ = {
+		6B91ACEA24F1C1AA003A798F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				6B91ACEB24F1C1B9003A798F /* MainViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		6BB8CBCF25CD8BEA00144138 /* Records */ = {
 			isa = PBXGroup;
 			children = (
 				6BB8CBD025CD8C0100144138 /* Records.storyboard */,
-				6BB8CBD425CD8DBC00144138 /* Adapter */,
-				6BB8CBD525CD8DC300144138 /* Cell */,
-				6BB8CBD325CD8DA000144138 /* Controller */,
+				6BB8CBD425CD8DBC00144138 /* Adapters */,
+				6BB8CBD525CD8DC300144138 /* Cells */,
+				6BB8CBD325CD8DA000144138 /* Controllers */,
 			);
 			path = Records;
 			sourceTree = "<group>";
 		};
-		6BB8CBD325CD8DA000144138 /* Controller */ = {
+		6BB8CBD325CD8DA000144138 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				6BB8CBDA25CD8E1400144138 /* RecordsViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		6BB8CBD425CD8DBC00144138 /* Adapter */ = {
+		6BB8CBD425CD8DBC00144138 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
 				6B4BEE0E25CE156D00C746C8 /* RecordsAdapter.swift */,
 			);
-			path = Adapter;
+			path = Adapters;
 			sourceTree = "<group>";
 		};
-		6BB8CBD525CD8DC300144138 /* Cell */ = {
+		6BB8CBD525CD8DC300144138 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				6B4BEE1225CE1C9B00C746C8 /* EmptyRecordsCell.swift */,
@@ -267,7 +267,7 @@
 				6B4BEE0825CDEA1F00C746C8 /* TopRecordCell.swift */,
 				6B4BEE0925CDEA1F00C746C8 /* TopRecordCell.xib */,
 			);
-			path = Cell;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -10,7 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController {
     private let squaresSpacing: CGFloat = 2
-    private let animationDuration: TimeInterval = 0.25
+    private let animationDuration: TimeInterval = 0.20
 
     @IBOutlet private weak var boardBackground: UIView!
     @IBOutlet private weak var boardContainer: UIView!
