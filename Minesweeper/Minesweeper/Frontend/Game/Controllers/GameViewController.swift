@@ -200,6 +200,13 @@ class GameViewController: UIViewController {
         flagModeButton.isEnabled = false
         timer?.invalidate()
         
+        let recordState = RecordsManager.shared.checkPossibleRecord(
+            timeInSeconds: timerCounter,
+            difficulty: game.currentDifficulty
+        )
+        
+        print(recordState)
+        
         let alert = UIAlertController(title: "VOCÊ GANHOU!", message: "Deseja jogar novamente?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Não", style: .destructive, handler: { _ in
             self.boardContainer.isUserInteractionEnabled = false
@@ -210,6 +217,13 @@ class GameViewController: UIViewController {
         }))
         
         present(alert, animated: true)
+        
+        RecordsManager.shared.addRecord(
+            Record(date: Date(),
+                   ownerName: "Duda",
+                   timeInSeconds: timerCounter),
+            difficulty: game.currentDifficulty
+        )
     }
     
     private func didLoseGame() {

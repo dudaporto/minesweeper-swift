@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct Game {
-    enum Difficulty: String, CaseIterable {
+    enum Difficulty: String, CaseIterable, Codable {
         case easy
         case medium
         case hard

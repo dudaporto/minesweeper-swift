@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol RecordsViewControllerDelegate: class {
+protocol RecordsViewControllerDelegate: NSObjectProtocol {
     func recordsViewControllerPlayButtonClicked(_ viewController: RecordsViewController)
 }
 
@@ -17,8 +17,7 @@ class RecordsViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var visualEffectView: UIVisualEffectView!
-    
-    var allRecords: [Record] = []// Record.mock
+
     var currentSelectedDifficulty: Game.Difficulty {
         Game.Difficulty.allCases[segmentedControl.selectedSegmentIndex]
     }
@@ -48,14 +47,13 @@ class RecordsViewController: UIViewController {
     
     private func setupAdapter() {
         adapter.emptyRecordsDelegate = self
-        
-        adapter.records[.easy] = []
-        adapter.records[.medium] = []
-        adapter.records[.hard] = []
-        
-        allRecords.forEach({ record in
-            adapter.records[record.difficulty]?.append(record)
-        })
+        updateAdapterData()
+    }
+    
+    private func updateAdapterData() {
+        adapter.difficultyRecords = RecordsManager.shared.recordsStore.first {
+            $0.difficulty == currentSelectedDifficulty
+        }
     }
     
     private func setupNavigationBar() {
@@ -79,15 +77,11 @@ class RecordsViewController: UIViewController {
     
     @IBAction private func segmentedControlValueDidChange(_ sendey: Any) {
         setupDifficultyColor()
-        adapter.currentDifficulty = currentSelectedDifficulty
+        updateAdapterData()
         collectionView.reloadData()
     }
     
     @IBAction private func deleteRecordsButtonClicked(_ sendey: Any) {
-//        guard !allRecords.isEmpty else {
-//            return
-//        }
-        
         let alert = UIAlertController(
             title: NSLocalizedString("records_delete_alert_title", comment: ""),
             message: NSLocalizedString("records_delete_alert_message", comment: ""),

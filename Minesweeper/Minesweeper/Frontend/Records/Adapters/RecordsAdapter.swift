@@ -14,9 +14,7 @@ class RecordsAdapter: NSObject {
         case records
     }
     
-    var records: [Game.Difficulty : [Record]] = [:]
-    var currentDifficulty: Game.Difficulty = .easy
-    
+    var difficultyRecords: DifficultyRecords!
     weak var emptyRecordsDelegate: EmptyRecordsCellDelegate?
     
     init(collectionView: UICollectionView) {
@@ -43,10 +41,10 @@ extension RecordsAdapter: UICollectionViewDataSource {
         
         switch section {
         case .emptyState:
-            return records[currentDifficulty].isNilOrEmpty ? 1 : 0
+            return difficultyRecords.records.isEmpty ? 1 : 0
             
         case .records:
-            return records[currentDifficulty]?.count ?? 0
+            return difficultyRecords.records.count
         }
     }
     
@@ -62,15 +60,11 @@ extension RecordsAdapter: UICollectionViewDataSource {
                 for: indexPath
             ) as! EmptyRecordsCell
             
-            cell.color = currentDifficulty.color
+            cell.color = difficultyRecords.difficulty.color
             cell.delegate = emptyRecordsDelegate
             return cell
             
         case .records:
-            guard let records = records[currentDifficulty] else {
-                return UICollectionViewCell()
-            }
-            
             switch indexPath.item {
             case 0:
                 let cell = collectionView.dequeueReusableCell(
@@ -78,7 +72,7 @@ extension RecordsAdapter: UICollectionViewDataSource {
                     for: indexPath
                 ) as! TopRecordCell
                 
-                cell.setup(with: records[indexPath.item])
+                cell.setup(with: difficultyRecords.records[indexPath.item])
                 return cell
                 
             default:
@@ -87,8 +81,8 @@ extension RecordsAdapter: UICollectionViewDataSource {
                     for: indexPath
                 ) as! RecordCell
                 
-                cell.setup(with: records[indexPath.item], and: indexPath.item + 1)
-                cell.color = currentDifficulty.color
+                cell.setup(with: difficultyRecords.records[indexPath.item], and: indexPath.item + 1)
+                cell.color = difficultyRecords.difficulty.color
                 return cell
             }
         }
