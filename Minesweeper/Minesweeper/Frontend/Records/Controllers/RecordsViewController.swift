@@ -18,8 +18,8 @@ class RecordsViewController: UIViewController {
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var visualEffectView: UIVisualEffectView!
 
-    var currentSelectedDifficulty: Game.Difficulty {
-        Game.Difficulty.allCases[segmentedControl.selectedSegmentIndex]
+    var currentSelectedDifficulty: Difficulty {
+        Difficulty.allCases[segmentedControl.selectedSegmentIndex]
     }
     
     weak var delegate: RecordsViewControllerDelegate?
@@ -65,7 +65,7 @@ class RecordsViewController: UIViewController {
     }
     
     private func setupSegmentedControl() {
-        Game.Difficulty.allCases.enumerated().forEach { (index, segment) in
+        Difficulty.allCases.enumerated().forEach { (index, segment) in
             segmentedControl.setTitle(segment.title, forSegmentAt: index)
         }
     }

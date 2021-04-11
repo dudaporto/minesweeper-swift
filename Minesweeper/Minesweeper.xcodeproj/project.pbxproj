@@ -21,6 +21,9 @@
 		6B4BEE0F25CE156D00C746C8 /* RecordsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BEE0E25CE156D00C746C8 /* RecordsAdapter.swift */; };
 		6B4BEE1425CE1C9B00C746C8 /* EmptyRecordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BEE1225CE1C9B00C746C8 /* EmptyRecordsCell.swift */; };
 		6B4BEE1525CE1C9B00C746C8 /* EmptyRecordsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B4BEE1325CE1C9B00C746C8 /* EmptyRecordsCell.xib */; };
+		6B760DE526228EAE00DA6D88 /* GameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B760DE426228EAE00DA6D88 /* GameDifficulty.swift */; };
+		6B760DE726228F0000DA6D88 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B760DE626228F0000DA6D88 /* Position.swift */; };
+		6B760DE926228FCF00DA6D88 /* BoardEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B760DE826228FCF00DA6D88 /* BoardEngine.swift */; };
 		6B7614AB25BFA4C800CA6575 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7614AA25BFA4C800CA6575 /* NSObject.swift */; };
 		6B7C631D25F6EB2900F16611 /* earthorbiter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B7C631C25F6EB2900F16611 /* earthorbiter.ttf */; };
 		6B8D507425FEEC0F00C09629 /* RecordsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D507325FEEC0F00C09629 /* RecordsManager.swift */; };
@@ -62,6 +65,9 @@
 		6B4BEE0E25CE156D00C746C8 /* RecordsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsAdapter.swift; sourceTree = "<group>"; };
 		6B4BEE1225CE1C9B00C746C8 /* EmptyRecordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRecordsCell.swift; sourceTree = "<group>"; };
 		6B4BEE1325CE1C9B00C746C8 /* EmptyRecordsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyRecordsCell.xib; sourceTree = "<group>"; };
+		6B760DE426228EAE00DA6D88 /* GameDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDifficulty.swift; sourceTree = "<group>"; };
+		6B760DE626228F0000DA6D88 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		6B760DE826228FCF00DA6D88 /* BoardEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardEngine.swift; sourceTree = "<group>"; };
 		6B7614AA25BFA4C800CA6575 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
 		6B7C631C25F6EB2900F16611 /* earthorbiter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = earthorbiter.ttf; sourceTree = "<group>"; };
 		6B8D507325FEEC0F00C09629 /* RecordsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsManager.swift; sourceTree = "<group>"; };
@@ -116,6 +122,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		6B760DE326228E9100DA6D88 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				6B760DE426228EAE00DA6D88 /* GameDifficulty.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		6B7C631025F6E80200F16611 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,8 +142,10 @@
 			isa = PBXGroup;
 			children = (
 				6B91ACDE24F1B75B003A798F /* Board.swift */,
+				6B760DE826228FCF00DA6D88 /* BoardEngine.swift */,
 				6B8D507825FEF03500C09629 /* DifficultyRecords.swift */,
 				6B91ACDC24F1A846003A798F /* Game.swift */,
+				6B760DE626228F0000DA6D88 /* Position.swift */,
 				6B91ACE024F1B94A003A798F /* Record.swift */,
 			);
 			path = Models;
@@ -179,6 +195,7 @@
 		6B91ACD524F1A2EE003A798F /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				6B760DE326228E9100DA6D88 /* Enums */,
 				6B91ACD924F1A3CF003A798F /* Extension */,
 				6B4726F624FDF71D00E4D26B /* Manager */,
 				6B8D507725FEF02200C09629 /* Models */,
@@ -368,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B760DE526228EAE00DA6D88 /* GameDifficulty.swift in Sources */,
 				6B91ACC524F19E6A003A798F /* GameViewController.swift in Sources */,
 				6BE7400725CE2277001EBA01 /* Optional.swift in Sources */,
 				6BB8CBDB25CD8E1400144138 /* RecordsViewController.swift in Sources */,
@@ -384,6 +402,8 @@
 				6B8D507425FEEC0F00C09629 /* RecordsManager.swift in Sources */,
 				6B8D507925FEF03500C09629 /* DifficultyRecords.swift in Sources */,
 				6B4BED6325CD990500C746C8 /* UICollectionViewCell.swift in Sources */,
+				6B760DE726228F0000DA6D88 /* Position.swift in Sources */,
+				6B760DE926228FCF00DA6D88 /* BoardEngine.swift in Sources */,
 				6B8D507625FEEDE100C09629 /* FileManager.swift in Sources */,
 				6B4BEE0A25CDEA1F00C746C8 /* TopRecordCell.swift in Sources */,
 				6B91ACDF24F1B75B003A798F /* Board.swift in Sources */,

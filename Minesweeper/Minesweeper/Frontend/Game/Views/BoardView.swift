@@ -66,7 +66,7 @@ class BoardView: UIStackView {
         }
     }
     
-    func setValues(values: [[Int]]) {
+    func setValues(values: BoardValues) {
         for i in 0..<numberOfRows {
             for j in 0..<numberOfColumns {
                 getSquare(at: Position(row: i, col: j))?.value = values[i][j]

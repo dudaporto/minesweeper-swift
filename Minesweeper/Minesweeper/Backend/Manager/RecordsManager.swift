@@ -9,12 +9,6 @@
 import Foundation
 
 final class RecordsManager {
-    enum RecordState {
-        case bestScore
-        case topFive
-        case notElegible
-    }
-    
     static let shared = RecordsManager()
     
     private let maxRecordsPerDifficulty = 5
@@ -31,23 +25,21 @@ final class RecordsManager {
         _ = shared
     }
     
-    func checkPossibleRecord(timeInSeconds: Int, difficulty: Game.Difficulty) -> RecordState {
+    func isRecord(timeInSeconds: Int, difficulty: Difficulty) -> Bool {
         guard let difficultyRecordsIndex = getIndex(of: difficulty) else {
-            return .notElegible
+            return false
         }
         
         let records = recordsStore[difficultyRecordsIndex].records
         
-        if let lastRecord = records.last, timeInSeconds > lastRecord.timeInSeconds {
-            return .notElegible
-        } else if let firstRecord = records.first, timeInSeconds < firstRecord.timeInSeconds {
-            return .bestScore
-        } else {
-            return .topFive
+        guard let topRecord = records.first else {
+            return true
         }
+        
+        return topRecord.timeInSeconds > timeInSeconds
     }
     
-    func addRecord(_ record: Record, difficulty: Game.Difficulty) {
+    func addRecord(_ record: Record, difficulty: Difficulty) {
         guard let difficultyRecordsIndex = getIndex(of: difficulty) else {
             return
         }
@@ -82,7 +74,7 @@ final class RecordsManager {
         loadRecords()
     }
     
-    private func getIndex(of difficuly: Game.Difficulty) -> Array<DifficultyRecords>.Index? {
+    private func getIndex(of difficuly: Difficulty) -> Array<DifficultyRecords>.Index? {
         let index = recordsStore.firstIndex(where: {
             $0.difficulty == difficuly
         })

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DifficultyPickerViewControllerDelegate: NSObjectProtocol {
-    func difficultyPickerDidSelectDifficulty(_ difficulty: Game.Difficulty)
+    func difficultyPickerDidSelectDifficulty(_ difficulty: Difficulty)
 }
 
 class DifficultyPickerViewController: UIViewController {
@@ -19,7 +19,7 @@ class DifficultyPickerViewController: UIViewController {
     @IBOutlet weak var mediumButton: UIButton!
     @IBOutlet weak var hardButton: UIButton!
 
-    var selectedDifficulty: Game.Difficulty = .easy
+    var selectedDifficulty: Difficulty = .easy
     
     private func updateSelectedButton() {
         clearButton(easyButton)

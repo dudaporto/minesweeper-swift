@@ -9,10 +9,10 @@
 import Foundation
 
 struct DifficultyRecords: Codable, Identifiable {
-    var id: Game.Difficulty {
+    var id: Difficulty {
         difficulty
     }
     
-    let difficulty: Game.Difficulty
+    let difficulty: Difficulty
     var records: [Record]
 }

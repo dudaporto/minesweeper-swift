@@ -115,7 +115,7 @@ class GameViewController: UIViewController {
         boardContainer.isUserInteractionEnabled = true
     }
     
-    private func startNewGame(difficulty: Game.Difficulty? = nil) {
+    private func startNewGame(difficulty: Difficulty? = nil) {
         invalidateTimer()
         flagModeButton.isEnabled = true
         isFlagModeActive = false
@@ -149,7 +149,7 @@ class GameViewController: UIViewController {
         restartButton.alpha = isEnabled ? 1 : 0.7
     }
     
-    private func setupDifficultyColor(_ difficulty: Game.Difficulty) {
+    private func setupDifficultyColor(_ difficulty: Difficulty) {
         navigationController?.navigationBar.tintColor = difficulty.color
         optionsButton.tintColor = difficulty.color
         flagModeButton.tintColor = difficulty.color
@@ -200,12 +200,12 @@ class GameViewController: UIViewController {
         flagModeButton.isEnabled = false
         timer?.invalidate()
         
-        let recordState = RecordsManager.shared.checkPossibleRecord(
+        let isRecord = RecordsManager.shared.isRecord(
             timeInSeconds: timerCounter,
             difficulty: game.currentDifficulty
         )
         
-        print(recordState)
+        print(isRecord)
         
         let alert = UIAlertController(title: "VOCÊ GANHOU!", message: "Deseja jogar novamente?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Não", style: .destructive, handler: { _ in
@@ -288,7 +288,7 @@ extension GameViewController: BoardViewDelegate {
 
 //MARK: - Difficulty Picker View Controller Delegate
 extension GameViewController: DifficultyPickerViewControllerDelegate {
-    func difficultyPickerDidSelectDifficulty(_ difficulty: Game.Difficulty) {
+    func difficultyPickerDidSelectDifficulty(_ difficulty: Difficulty) {
         if difficulty != game.currentDifficulty {
             setupDifficultyColor(difficulty)
             startNewGame(difficulty: difficulty)

@@ -12,12 +12,12 @@ final class DifficultyManager {
     //MARK: - USER DEFAULTS
     static private let selectedDifficultyUserDefaultsKey = "Minesweeper.selectedDifficulty"
     
-    static func saveSeletedDifficulty(_ difficulty: Game.Difficulty) {
+    static func saveSeletedDifficulty(_ difficulty: Difficulty) {
         UserDefaults.standard.set(difficulty.rawValue, forKey: DifficultyManager.selectedDifficultyUserDefaultsKey)
     }
     
-    static func getSelectedDifficulty() -> Game.Difficulty {
-        let rawValue = UserDefaults.standard.string(forKey: selectedDifficultyUserDefaultsKey) ?? Game.Difficulty.medium.rawValue
-        return Game.Difficulty(rawValue: rawValue)!
+    static func getSelectedDifficulty() -> Difficulty {
+        let rawValue = UserDefaults.standard.string(forKey: selectedDifficultyUserDefaultsKey) ?? Difficulty.medium.rawValue
+        return Difficulty(rawValue: rawValue)!
     }
 }
