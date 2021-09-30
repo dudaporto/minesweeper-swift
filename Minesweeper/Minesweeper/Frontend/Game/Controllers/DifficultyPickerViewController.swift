@@ -26,6 +26,8 @@ class DifficultyPickerViewController: UIViewController {
         clearButton(mediumButton)
         clearButton(hardButton)
         
+        // minha alteração
+        
         switch selectedDifficulty {
         case .easy:
             selectButton(easyButton)
